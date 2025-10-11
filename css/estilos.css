@@ -1071,47 +1071,59 @@ html {
 }
 
 /* ================= FOOTER ================= */
-/* Pie de página con contacto, enlaces y boletín */
+/* === PIE DE PÁGINA === */
 .footer {
-    background-color: var(--primary-color);
-    /* Fondo oscuro */
+    background-color: var(--primary-color); /* Fondo oscuro principal (puedes definirlo en :root) */
     color: #fff;
-    /* Texto blanco */
     padding: 4rem 2rem;
-    /* Espaciado interno */
     font-size: 1.4rem;
-    /* Tamaño base del texto */
 }
 
-/* Contenedor principal que organiza las secciones */
+/* === CONTENEDOR PRINCIPAL DEL FOOTER === */
 .footer-container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
-    gap: 2rem;
-    max-width: 120rem;
+    gap: 3rem;
+    max-width: 130rem;
     margin: 0 auto;
-    text-align: center;
+    text-align: center; /* mejor alineado para texto descriptivo */
+
 }
 
+/* === CADA COLUMNA === */
 .footer-contacto,
 .footer-enlaces,
 .footer-boletin {
+    flex: 1 1 300px; /* se adaptan al ancho del contenedor */
     min-width: 260px;
-    flex: 1 1 0;
 }
 
-/* Títulos dentro del footer */
-.footer h3,
-.footer h4 {
-    color: #ffcc66;
-    /* Color dorado */
+/* 🔧 Corrección del selector: faltaba el punto (.) */
+.footer .contacto-datos {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-size: 1.3rem;
+}
+
+/* === TÍTULOS === */
+.footer h3 {
+    color: #ffcc66; /* Dorado */
     margin-bottom: 1rem;
     font-size: 1.8rem;
+    text-shadow: 2px 2px 4px rgb(48, 47, 47);
+    display: flex;
+    justify-content: center;
 }
 
-/* Párrafos generales */
+.footer-contacto .contacto-datos strong {
+    color: #42403c; /* color de acento */
+    font-weight: 600;
+
+}
+
+/* === PÁRRAFOS === */
 .footer p {
     margin-bottom: 0.8rem;
     line-height: 1.6;
@@ -1120,7 +1132,6 @@ html {
 /* === ENLACES RÁPIDOS === */
 .footer-enlaces ul {
     list-style: none;
-    /* Quita viñetas */
     padding: 0;
     margin: 0;
 }
@@ -1133,12 +1144,11 @@ html {
     color: #fff;
     text-decoration: none;
     transition: color 0.3s ease;
-    /* Efecto suave al pasar el mouse */
 }
 
-.footer-enlaces a:hover {
-    color: #ffcc66;
-    /* Cambia a dorado */
+.footer-enlaces a:hover,
+.footer-enlaces a.active {
+    color: #ffcc66; /* Dorado al pasar el mouse o al estar activo */
 }
 
 /* === FORMULARIO DEL BOLETÍN === */
@@ -1164,21 +1174,23 @@ html {
     cursor: pointer;
     font-weight: 600;
     font-size: 1.4rem;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .footer-boletin button:hover {
     background-color: #ffb84d;
-    /* Color más cálido al pasar el mouse */
+    transform: scale(1.05);
 }
 
-/* === REDES SOCIALES === */
 .footer-redes {
     display: flex;
-    /* Íconos en una sola línea */
-    gap: 1rem;
+    flex-direction: row; /* 👉 en fila horizontal */
+    justify-content: center; /* centra las redes */
     align-items: center;
+    gap: 1.5rem; /* separación entre íconos */
+    margin-top: 1.5rem;
 }
+
 
 .footer-redes a {
     color: #fff;
@@ -1192,7 +1204,6 @@ html {
 .footer-redes a:hover {
     color: #ffcc66;
     transform: translateX(0.3rem);
-    /* Pequeño movimiento al pasar el mouse */
 }
 
 .icono-red {
@@ -1203,12 +1214,25 @@ html {
 /* === DERECHOS DE AUTOR === */
 .footer-copy {
     text-align: center;
-    border-top: 0.1rem solid #444;
+    border-top: 0.1rem solid rgba(255, 255, 255, 0.3);
+    margin-top: 3rem;
+    padding-top: 1rem;
+    font-size: 1.3rem;
+    color: #ddd;
+}
+
+
+/* === DERECHOS DE AUTOR === */
+.footer-copy {
+    text-align: center;
+    border-top: 0.15rem solid #2a1b1b;
     /* Línea divisoria superior */
     margin-top: 3rem;
     padding-top: 1.5rem;
     font-size: 1.3rem;
-    color: #bbb;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
 }
 
 /* ================= RESPONSIVE ================= */

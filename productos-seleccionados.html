@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Cafetería Dulce Aroma ICA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Cafetería, Café, Postres, Ica">
+    <meta name="description" content="Página oficial de la Cafetería Dulce Aroma ICA">
+    <link rel="icon" href="img/cafeteria_icono.png">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+    <!-- HEADER: Barra superior con soporte, logo y usuario-->
+    <header>
+        <div class="container-hero">
+            <div class="container hero">
+
+                <!-- Soporte al cliente -->
+                <div class="soporte-cliente">
+                    <img src="img/soporte_cliente.png" alt="Soporte" class="icono-soporte" />
+                    <div class="contenido-soporte">
+                        <span class="text">Soporte al cliente</span>
+                        <span class="number">+51 987 654 321</span>
+                    </div>
+                </div>
+
+                <!-- Logo principal -->
+                <div class="container-logo">
+                    <img src="img/cafeteria_icono.png" alt="Logo" class="icono-logo" />
+                    <h1 class="logo">
+                        <a href="/">Dulce Aroma Ica</a>
+                    </h1>
+                </div>
+
+                <!-- Usuario y carrito -->
+                <div class="contenedor-usuario">
+                    <img src="img/usuario.png" alt="Usuario" class="icono-usuario" />
+                    <img src="img/carrito.png" alt="Carrito" class="icono-carrito" />
+                    <div class="contenido-carrito">
+                        <span class="text">Carrito</span>
+                        <span class="number">(0)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NAVBAR: Menú de navegación y buscador -->
+        <div class="container-navbar">
+            <nav class="navbar container">
+                <img src="img/menu.png" alt="Menú" class="icono-menu" />
+                <ul class="menu">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos-lista.html">Menú</a></li>
+                    <li><a href="productos-detalle.html">Detalle del producto</a></li>
+                    <li><a href="productos-seleccionados.html" class="active">Carrito</a></li>
+                    <li><a href="verificar-compra.html">Pagar</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+
+                <!-- Buscador -->
+                <form class="search-form">
+                    <input type="search" placeholder="Buscar..." />
+                    <button class="btn-search">
+                        <img src="img/buscar.png" alt="Buscar" class="icono-buscar" />
+                    </button>
+                </form>
+            </nav>
+        </div>
+    </header>
+    <!-- MAIN: Contenido principal de la página -->
+    <main class="main-content">
+
+        <!-- Encabezado principal de la página del carrito -->
+        <section class="page-header">
+            <h1 class="heading-1">Carrito de Compras</h1>
+            <p>Revisa tus productos seleccionados antes de continuar</p>
+        </section>
+
+        <div class="container">
+
+            <!-- Sección principal del carrito (productos + resumen de compra) -->
+            <section class="cart-section">
+
+                <!-- Tabla que lista los productos añadidos al carrito -->
+                <div class="cart-items-container">
+                    <table class="cart-table">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th>Total</th>
+                                <th></th> <!-- Columna vacía para el botón de eliminar -->
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <!-- Primer producto del carrito -->
+                            <tr>
+                                <td>
+                                    <!-- Muestra imagen y nombre del producto -->
+                                    <div class="product-info">
+                                        <img src="img/capuchino.jpg" alt="Capuchino Italiano"
+                                            class="product-image-cart">
+                                        <span>Capuchino Italiano</span>
+                                    </div>
+                                </td>
+                                <td>S/6.30</td>
+
+                                <!-- Control de cantidad con botones + y - -->
+                                <td>
+                                    <div class="quantity-selector">
+                                        <button type="button" class="quantity-btn minus-btn">-</button>
+                                        <input type="number" value="2" min="1">
+                                        <button type="button" class="quantity-btn plus-btn">+</button>
+                                    </div>
+                                </td>
+
+                                <!-- Total del producto según cantidad -->
+                                <td>S/12.60</td>
+
+                                <!-- Botón para eliminar el producto del carrito -->
+                                <td>
+                                    <button class="remove-item-btn" title="Eliminar producto">X</button>
+                                </td>
+                            </tr>
+
+                            <!-- Segundo producto del carrito -->
+                            <tr>
+                                <td>
+                                    <div class="product-info">
+                                        <img src="img/frappuccino.jpg" alt="Frappuccino Clásico"
+                                            class="product-image-cart">
+                                        <span>Frappuccino Clásico</span>
+                                    </div>
+                                </td>
+                                <td>S/8.00</td>
+                                <td>
+                                    <div class="quantity-selector">
+                                        <button type="button" class="quantity-btn minus-btn">-</button>
+                                        <input type="number" value="1" min="1">
+                                        <button type="button" class="quantity-btn plus-btn">+</button>
+                                    </div>
+                                </td>
+                                <td>S/8.00</td>
+                                <td>
+                                    <button class="remove-item-btn" title="Eliminar producto">X</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Resumen del pedido con subtotal, envío y total final -->
+                <div class="cart-summary">
+                    <h2 class="contact-subtitle">Resumen de la Compra</h2>
+
+                    <!-- Subtotal de los productos -->
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span>S/20.60</span>
+                    </div>
+
+                    <!-- Costo del envío -->
+                    <div class="summary-row">
+                        <span>Envío</span>
+                        <span>S/5.00</span>
+                    </div>
+
+                    <!-- Total final a pagar -->
+                    <div class="summary-row total-row">
+                        <span>Total</span>
+                        <span>S/25.60</span>
+                    </div>
+
+                    <!-- Botones de acción: ir al pago o seguir comprando -->
+                    <a href="verificar-compra.html" class="btn-checkout">Proceder al Pago</a>
+                    <a href="productos-lista.html" class="btn-continue-shopping">Seguir Comprando</a>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <!-- FOOTER: Información de contacto, enlaces y redes sociales -->
+    <footer class="footer">
+        <div class="footer-container">
+
+            <!-- Sección: Información de contacto -->
+            <div class="footer-contacto">
+                <h3>Contáctanos</h3>
+                <p>Ven y disfruta el mejor café y postres en Ica. ¡Te esperamos en Dulce Aroma!</p>
+                <p><strong>Dirección:</strong> Calle Principal 123, Ica, Perú</p>
+                <p><strong>Email:</strong> info@dulcearoma.com</p>
+                <p><strong>Teléfono:</strong> +51 987 654 321</p>
+            </div>
+
+            <!-- Sección: Enlaces rápidos del sitio -->
+            <div class="footer-enlaces">
+                <h3>Enlaces rápidos</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos-lista.html">Menú</a></li>
+                    <li><a href="productos-detalle.html">Detalle del producto</a></li>
+                    <li><a href="productos-seleccionados.html" class="active">Carrito</a></li>
+                    <li><a href="verificar-compra.html">Pagar</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <!-- Sección: Suscripción y redes sociales -->
+            <div class="footer-boletin">
+                <h3>Boletín</h3>
+                <p>Recibe nuestras ofertas y novedades en tu correo.</p>
+
+                <!-- Formulario de suscripción -->
+                <form>
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                    <button type="submit">Suscribirse</button>
+                </form>
+
+                <!-- Enlaces a redes sociales -->
+                <h4>Síguenos</h4>
+                <div class="footer-redes">
+                    <a href="#"><img src="img/x.png" alt="X" class="icono-red"> Twitter</a>
+                    <a href="#"><img src="img/facebook.png" alt="Facebook" class="icono-red"> Facebook</a>
+                    <a href="#"><img src="img/instagram.png" alt="Instagram" class="icono-red"> Instagram</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección: Derechos de autor -->
+        <div class="footer-copy">
+            <p>&copy; 2025 Dulce Aroma ICA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

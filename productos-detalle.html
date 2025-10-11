@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Cafetería Dulce Aroma ICA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Cafetería, Café, Postres, Ica">
+    <meta name="description" content="Página oficial de la Cafetería Dulce Aroma ICA">
+    <link rel="icon" href="img/cafeteria_icono.png">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+    <!-- HEADER: Barra superior con soporte, logo y usuario-->
+    <header>
+        <div class="container-hero">
+            <div class="container hero">
+
+                <!-- Soporte al cliente -->
+                <div class="soporte-cliente">
+                    <img src="img/soporte_cliente.png" alt="Soporte" class="icono-soporte" />
+                    <div class="contenido-soporte">
+                        <span class="text">Soporte al cliente</span>
+                        <span class="number">+51 987 654 321</span>
+                    </div>
+                </div>
+
+                <!-- Logo principal -->
+                <div class="container-logo">
+                    <img src="img/cafeteria_icono.png" alt="Logo" class="icono-logo" />
+                    <h1 class="logo">
+                        <a href="/">Dulce Aroma Ica</a>
+                    </h1>
+                </div>
+
+                <!-- Usuario y carrito -->
+                <div class="contenedor-usuario">
+                    <img src="img/usuario.png" alt="Usuario" class="icono-usuario" />
+                    <img src="img/carrito.png" alt="Carrito" class="icono-carrito" />
+                    <div class="contenido-carrito">
+                        <span class="text">Carrito</span>
+                        <span class="number">(0)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NAVBAR: Menú de navegación y buscador -->
+        <div class="container-navbar">
+            <nav class="navbar container">
+                <img src="img/menu.png" alt="Menú" class="icono-menu" />
+                <ul class="menu">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos-lista.html">Menú</a></li>
+                    <li><a href="productos-detalle.html" class="active">Detalle del producto</a></li>
+                    <li><a href="productos-seleccionados.html">Carrito</a></li>
+                    <li><a href="verificar-compra.html">Pagar</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+
+                <!-- Buscador -->
+                <form class="search-form">
+                    <input type="search" placeholder="Buscar..." />
+                    <button class="btn-search">
+                        <img src="img/buscar.png" alt="Buscar" class="icono-buscar" />
+                    </button>
+                </form>
+            </nav>
+        </div>
+    </header>
+    <!-- MAIN: Contenido principal de la página -->
+    <main class="main-content">
+
+    <!-- Encabezado principal de la página con el título y una breve descripción -->
+    <section class="page-header">
+        <h1 class="heading-1">Detalles del Producto</h1>
+        <p>Conoce más sobre nuestras deliciosas creaciones</p>
+    </section>
+
+    <div class="container">
+
+        <!-- Sección principal del producto: imágenes, descripción, precio y botón de compra -->
+        <section class="product-detail-section">
+            
+            <!-- Galería del producto (imagen principal + miniaturas) -->
+            <div class="product-gallery">
+                <div class="main-image">
+                    <img src="img/capuchino.jpg" alt="Capuchino Italiano - Vista Principal" id="mainProductImage">
+                </div>
+                <div class="thumbnail-images">
+                    <img src="img/capuchino.jpg" alt="Miniatura 1" class="thumbnail">
+                    <img src="img/capuchino.jpg" alt="Miniatura 2" class="thumbnail">
+                    <img src="img/capuchino.jpg" alt="Miniatura 3" class="thumbnail">
+                    <img src="img/capuchino.jpg" alt="Miniatura 4" class="thumbnail">
+                </div>
+            </div>
+
+            <!-- Contenido descriptivo del producto (nombre, precio, descripción, cantidad, etc.) -->
+            <div class="product-details-content">
+                <h2 class="product-title">Capuchino Italiano</h2>
+
+                <!-- Precio actual y anterior -->
+                <div class="product-price">S/6.30 <span>S/7.00</span></div>
+
+                <!-- Descripción del producto -->
+                <p class="product-description">
+                    Disfruta de la perfección en una taza con nuestro Capuchino Italiano. Elaborado con un espresso de tueste oscuro, leche vaporizada cremosa y una capa de espuma aterciopelada. Cada sorbo es una experiencia rica y equilibrada, ideal para empezar tu día o para una pausa reconfortante.
+                </p>
+
+                <!-- Selector de cantidad con botones + y - -->
+                <div class="quantity-selector">
+                    <label for="quantity">Cantidad:</label>
+                    <button type="button" class="quantity-btn minus-btn">-</button>
+                    <input type="number" id="quantity" name="quantity" value="1" min="1">
+                    <button type="button" class="quantity-btn plus-btn">+</button>
+                </div>
+
+                <!-- Botón para añadir el producto al carrito -->
+                <button type="button" class="btn-add-to-cart">Añadir al Carrito</button>
+
+                <!-- Información adicional del producto -->
+                <div class="product-meta">
+                    <p><strong>Categoría:</strong> Cafés Calientes</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de productos relacionados (recomendaciones) -->
+        <section class="related-products">
+            <h2 class="category-title">También te podría gustar</h2>
+            
+            <div class="container-products">
+                
+                <!-- Producto relacionado 1 -->
+                <article class="card-product">
+                    <div class="container-img">
+                        <img src="img/cafe_americano.jpg" alt="Café Americano">
+                    </div>
+                    <div class="content-card-product">
+                        <h3>Café Americano</h3>
+                        <div class="add-cart"><img class="icono-carrito" src="img/carrito.png" alt="Agregar al Carrito"></div>
+                        <div class="price">S/5.00</div>
+                    </div>
+                </article>
+
+                <!-- Producto relacionado 2 -->
+                <article class="card-product">
+                    <div class="container-img">
+                        <img src="img/cafe_moca.jpg" alt="Mocaccino">
+                    </div>
+                    <div class="content-card-product">
+                        <h3>Mocaccino</h3>
+                        <div class="add-cart"><img class="icono-carrito" src="img/carrito.png" alt="Agregar al Carrito"></div>
+                        <div class="price">S/7.50</div>
+                    </div>
+                </article>
+
+                <!-- Producto relacionado 3 -->
+                <article class="card-product">
+                    <div class="container-img">
+                        <img src="img/frappuccino.jpg" alt="Frappuccino">
+                    </div>
+                    <div class="content-card-product">
+                        <h3>Frappuccino Clásico</h3>
+                        <div class="add-cart"><img class="icono-carrito" src="img/carrito.png" alt="Agregar al Carrito"></div>
+                        <div class="price">S/8.00</div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </div>
+</main>
+
+
+    <!-- FOOTER: Información de contacto, enlaces y redes sociales -->
+    <footer class="footer">
+        <div class="footer-container">
+
+            <!-- Sección: Información de contacto -->
+            <div class="footer-contacto">
+                <h3>Contáctanos</h3>
+                <p>Ven y disfruta el mejor café y postres en Ica. ¡Te esperamos en Dulce Aroma!</p>
+                <p><strong>Dirección:</strong> Calle Principal 123, Ica, Perú</p>
+                <p><strong>Email:</strong> info@dulcearoma.com</p>
+                <p><strong>Teléfono:</strong> +51 987 654 321</p>
+            </div>
+
+            <!-- Sección: Enlaces rápidos del sitio -->
+            <div class="footer-enlaces">
+                <h3>Enlaces rápidos</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos-lista.html">Menú</a></li>
+                    <li><a href="productos-detalle.html" class="active">Detalle del producto</a></li>
+                    <li><a href="productos-seleccionados.html">Carrito</a></li>
+                    <li><a href="verificar-compra.html">Pagar</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <!-- Sección: Suscripción y redes sociales -->
+            <div class="footer-boletin">
+                <h3>Boletín</h3>
+                <p>Recibe nuestras ofertas y novedades en tu correo.</p>
+
+                <!-- Formulario de suscripción -->
+                <form>
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                    <button type="submit">Suscribirse</button>
+                </form>
+
+                <!-- Enlaces a redes sociales -->
+                <h4>Síguenos</h4>
+                <div class="footer-redes">
+                    <a href="#"><img src="img/x.png" alt="X" class="icono-red"> Twitter</a>
+                    <a href="#"><img src="img/facebook.png" alt="Facebook" class="icono-red"> Facebook</a>
+                    <a href="#"><img src="img/instagram.png" alt="Instagram" class="icono-red"> Instagram</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección: Derechos de autor -->
+        <div class="footer-copy">
+            <p>&copy; 2025 Dulce Aroma ICA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

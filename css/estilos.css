@@ -510,7 +510,6 @@ html {
 }
 
 /* ================= TOP PRODUCTS ================= */
-/* Productos destacados */
 .top-products {
     display: flex;
     flex-direction: column;
@@ -518,50 +517,50 @@ html {
     margin-bottom: 3rem;
 }
 
-/* Opciones de filtro */
-.container-options {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 1rem;
-}
-
-.container-options span {
-    color: #777;
-    background-color: #fff;
-    padding: 0.7rem 3rem;
-    font-size: 1.4rem;
-    text-transform: capitalize;
-    border-radius: 2rem;
-    cursor: pointer;
-}
-
-.container-options span:hover,
-.container-options span.active {
-    background-color: var(--primary-color);
-    color: #fff;
-}
-
-/* Cuadrícula de productos */
+/* Contenedor del carrusel */
 .container-products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding: 20px 0;
+}
+
+/* Wrapper que se mueve */
+.slider-track {
+    display: flex;
     gap: 3rem;
+    animation: scroll 20s linear infinite;
+    /* animación infinita */
 }
 
 /* Tarjeta del producto */
 .card-product {
+    flex: 0 0 auto; /* ✅ Mantiene su tamaño real sin encogerse */
+    width: 250px; /* ✅ Ancho fijo, puedes ajustarlo a tu diseño */
     background-color: #fff;
     padding: 2rem;
     border-radius: 0.8rem;
     cursor: pointer;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease;
 }
 
 .card-product:hover {
     transform: translateY(-5px);
 }
+
+/* Animación infinita */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-1750px);
+        /* mueve la mitad del contenido (duplicado) */
+    }
+}
+
 
 /* Contenedor de imagen */
 .container-img {
@@ -746,6 +745,11 @@ html {
     margin-bottom: 5rem;
 }
 
+.product-category-container-img {
+    display: flex;
+    justify-content: center;
+}
+
 /* Estilo para el título de cada categoría (e.g., "Cafés Calientes") */
 .category-title {
     font-size: 2.5rem;
@@ -754,6 +758,36 @@ html {
     margin-bottom: 2rem;
     padding-bottom: 1rem;
     border-bottom: 2px solid #eee;
+}
+
+/* ================= PRODUCTOS EN FILA ================= */
+.menu-products {
+    display: flex;
+    flex-wrap: wrap;  /* 🔹 Permite que los productos bajen a otra fila */
+    gap: 2rem;
+    justify-content: flex-start;
+}
+
+.menu-products::-webkit-scrollbar {
+    height: 8px;
+}
+
+.menu-products::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+.menu-products .card-product {
+    flex: 0 0 280px;            /* 🔹 Cada tarjeta tiene ancho fijo */
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.menu-products .card-product:hover {
+    transform: translateY(-5px);
 }
 
 /* ================= CONTACTO PAGE ================= */

@@ -113,72 +113,71 @@ html {
 /* ================= NAVBAR ================= */
 /* Fondo del navbar */
 .container-navbar {
-    background-color: var(--primary-color);
+    background-color:#1f1f1f; /* color del fondo del navbar */
+    padding: 10px 0;
 }
 
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* enlaces al centro, buscador a la derecha */
     align-items: center;
-    padding: 1rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.icono-menu {
-    width: 32px;
-    height: 32px;
-    margin-right: 1rem;
-}
-
+/* === MENÚ DE ENLACES === */
 .menu {
-    display: flex;
-    gap: 2rem;
-}
-
-.menu li {
     list-style: none;
+    display: flex;
+    justify-content: center; /* centra los enlaces */
+    flex: 1; /* ocupa el espacio central */
+    gap: 30px;
+    margin: 0;
+    padding: 0;
 }
 
 .menu a {
+    color: white;
     text-decoration: none;
     font-size: 1.3rem;
-    color: var(--dark-color);
-    font-weight: 600;
-    text-transform: uppercase;
-    position: relative;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+/* 🔹 EFECTO DE SUBRAYADO ANIMADO (agregar desde aquí) */
+.menu a {
+    position: relative; /* necesario para colocar la línea */
 }
 
 .menu a::after {
-    content: '';
-    width: 1.5rem;
-    height: 1px;
-    background-color: #fff;
+    content: "";
     position: absolute;
-    bottom: -3px;
+    bottom: -4px; /* distancia de la línea respecto al texto */
     left: 50%;
-    transform: translate(-50%, 50%);
-    opacity: 0;
-    transition: all 0.3s ease;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 2px;
+    background-color: #ffb400; /* color de la línea */
+    transition: width 0.3s ease;
 }
 
 .menu a:hover::after {
-    opacity: 1;
+    width: 100%;
+}
+/* 🔹 Hasta aquí el agregado */
+
+/* Efecto al pasar el cursor */
+.menu a:hover {
+    color: #ffb400;
 }
 
-/* Agregamos .menu a.active para que el estilo se aplique también al enlace activo */
-.menu a:hover,
-.menu a.active {
-    color: #fff;
-}
 
-/* Hacemos que la línea inferior también aparezca en el enlace activo */
-.menu a:hover::after,
-.menu a.active::after {
-    opacity: 1;
-}
-/* Buscador de productos */
+/* === BUSCADOR (mantiene tu estilo original) === */
 .search-form {
     position: relative;
     display: flex;
+    justify-content: flex-end;
     align-items: center;
     border: 2px solid #fff;
     border-radius: 2rem;
@@ -206,6 +205,7 @@ html {
     justify-content: center;
     height: 100%;
     padding: 1rem;
+    cursor: pointer;
 }
 
 .icono-buscar {
@@ -224,21 +224,21 @@ html {
 }
 
 .content-banner {
-    max-width: 90rem;
+    max-width: 130rem;
     margin: 0 auto;
-    padding: 25rem 0;
+    padding: 20rem 0;
 }
 
 .content-banner p {
     color: var(--primary-color);
-    font-size: 1.2rem;
+    font-size: 2rem;
     margin-bottom: 1rem;
-    font-weight: 500;
+    font-weight: 650;
 }
 
 .content-banner h2 {
     color: #fff;
-    font-size: 3.5rem;
+    font-size: 5rem;
     font-weight: 500;
     line-height: 1.2;
 }
@@ -246,6 +246,7 @@ html {
 .content-banner a {
     margin-top: 2rem;
     text-decoration: none;
+    font-size: 1.5rem;
     color: #fff;
     background-color: var(--primary-color);
     display: inline-block;
@@ -278,6 +279,7 @@ html {
     background-color: #fff;
     border-radius: 1rem;
     padding: 1.5rem 0;
+    box-shadow: 3px 6px 6px #323131;
 }
 
 .icono-feature {
@@ -289,17 +291,19 @@ html {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    margin-left: 2rem;
 }
 
 .feature-content span {
-    font-weight: 700;
-    font-size: 1.2rem;
+    font-weight: 550;
+    font-size: 1.6rem;
     color: var(--dark-color);
 }
 
 .feature-content p {
     color: #777;
     font-weight: 500;
+    font-size: 1.4rem;
 }
 
 /* ================= CATEGORIES ================= */
@@ -328,6 +332,8 @@ html {
     top: 0;
     left: 0;
     z-index: 1;
+    opacity: 0.76; /* reduce la intensidad de la imagen */
+    filter: brightness(80%); /* oscurece ligeramente para que el texto resalte */
 }
 
 .card-category {
@@ -343,9 +349,10 @@ html {
 }
 
 .card-category p {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     color: #fff;
     text-transform: capitalize;
+    text-shadow: 2px 2px 10px #000000;
     position: absolute;
     left: 50%;
     top: 40%;
@@ -365,13 +372,20 @@ html {
     top: 65%;
     transform: translate(-50%, 0);
     z-index: 2;
-    background: rgba(0, 0, 0, 0.3);
-    padding: 0.5rem 1.5rem;
+    background: var(--primary-color);
+    opacity: 0.9;
+    padding: 0.7rem 1.5rem;
     border-radius: 1rem;
+    font-weight: 500;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+    transition: all 0.3s ease; 
 }
 
 .card-category span:hover {
-    color: var(--primary-color);
+    background: #ffffff; 
+    color: var(--primary-color); 
+    transform: translate(-50%, 0) scale(1.1); 
 }
 
 /* ================= TOP PRODUCTS ================= */
@@ -595,12 +609,14 @@ html {
 }
 
 .page-header .heading-1 {
-    color: var(--primary-color);
+    color: #000;
+    font-weight: bold;
 }
 
 .page-header p {
     color: var(--primary-color);
-    font-size: 1.6rem;
+    font-weight: 600;
+    font-size: 1.8rem;
     margin-top: 1rem;
 }
 

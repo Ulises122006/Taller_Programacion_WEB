@@ -483,7 +483,7 @@ html {
     font-weight: 600;
 }
 
-.card-category span {
+.card-category a {
     font-size: 1.6rem;
     color: var(--dark-color);
     cursor: pointer;
@@ -497,6 +497,7 @@ html {
     padding: 0.7rem 1.5rem;
     border-radius: 1rem;
     font-weight: 500;
+    text-decoration: none;
 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;

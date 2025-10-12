@@ -49,8 +49,17 @@
         <!-- NAVBAR: Menú de navegación y buscador -->
         <div class="container-navbar">
             <nav class="navbar container">
+
+                <!-- Hamburguesa -->
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <!-- Menú de enlaces -->
                 <ul class="menu">
-                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.html" class="active">Inicio</a></li>
                     <li><a href="menu.html">Menú</a></li>
                     <li><a href="detalles.html">Detalle del producto</a></li>
                     <li><a href="carrito.html">Carrito</a></li>
@@ -65,8 +74,10 @@
                         <img src="img/buscar.png" alt="Buscar" class="icono-buscar" />
                     </button>
                 </form>
+
             </nav>
         </div>
+
     </header>
 
     <!-- BANNER: Portada principal con texto y botón -->
@@ -74,12 +85,44 @@
         <div class="content-banner">
             <p>Café Delicioso</p>
             <h2>100% Natural <br />Café Fresco</h2>
-            <a href="menu.html">Comprar ahora</a>
+            <a href="menu.html">Ver nuestro menú</a>
         </div>
     </section>
 
     <!-- MAIN: Contenido principal de la página -->
     <main class="main-content">
+
+        <!-- ================= SOBRE NOSOTROS ================= -->
+        <section class="container-nosotros">
+            <div class="nosotros-contenido">
+                <h2>Sobre Nosotros</h2>
+                <p>
+                    En <strong>Dulce Aroma Ica</strong> preparamos café 100% peruano con granos seleccionados.
+                    Acompáñalo con nuestros postres recién hechos, elaborados con el mismo cariño que en casa.
+                </p>
+
+                <div class="nosotros-caracteristicas">
+                    <div class="item">
+                        <img src="img/icon_cafe.jpg" alt="Café peruano">
+                        <h3>Café 100% peruano</h3>
+                        <p>Seleccionamos granos de altura para ofrecerte el mejor sabor en cada taza.</p>
+                    </div>
+
+                    <div class="item">
+                        <img src="img/icon_pastel.jpg" alt="Postres artesanales">
+                        <h3>Postres artesanales</h3>
+                        <p>Hechos cada mañana por nuestros chefs para acompañar tu café.</p>
+                    </div>
+
+                    <div class="item">
+                        <img src="img/icon_enviocafe.jpg" alt="Entrega rápida">
+                        <h3>Entrega rápida</h3>
+                        <p>Tu pedido llega caliente y fresco hasta tu puerta.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
         <!-- Características del negocio -->
         <section class="container container-features">
@@ -114,19 +157,19 @@
             <div class="container-categories">
                 <div class="card-category category-moca">
                     <img src="img/cafe_moca.jpg" alt="Café moca" class="img-categoria">
-                    <p>Café moca</p>
+                    <p>Café Caliente</p>
                     <span>Ver más</span>
                 </div>
 
                 <div class="card-category category-expreso">
                     <img src="img/expreso_americano.jpeg" alt="Expreso Americano" class="img-categoria">
-                    <p>Expreso Americano</p>
+                    <p>Bebidas Frías</p>
                     <span>Ver más</span>
                 </div>
 
                 <div class="card-category category-capuchino">
                     <img src="img/capuchino.jpg" alt="Capuchino" class="img-categoria">
-                    <p>Capuchino</p>
+                    <p>Postres</p>
                     <span>Ver más</span>
                 </div>
             </div>
@@ -287,7 +330,7 @@
                 <p>Recibe nuestras ofertas y novedades en tu correo.</p>
 
                 <!-- Formulario de suscripción -->
-                <form>
+                <form onsubmit="return false;">
                     <input type="email" placeholder="Tu correo electrónico" required>
                     <button type="submit">Suscribirse</button>
                 </form>

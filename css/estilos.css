@@ -34,9 +34,27 @@ html {
 
 /* Título principal de cada sección */
 .heading-1 {
+    font-size: 4rem;
+    color: #000000;
+    margin-bottom: 15px;
     text-align: center;
-    font-weight: 500;
-    font-size: 3rem;
+}
+
+/* ===== HAMBURGUESA ===== */
+.hamburger {
+    display: none;
+    /* se muestra solo en móvil */
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger span {
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    /* línea blanca sobre navbar oscuro */
+    border-radius: 2px;
 }
 
 /* ================= HEADER ================= */
@@ -113,13 +131,15 @@ html {
 /* ================= NAVBAR ================= */
 /* Fondo del navbar */
 .container-navbar {
-    background-color:#1f1f1f; /* color del fondo del navbar */
+    background-color: #1f1f1f;
+    /* color del fondo del navbar */
     padding: 10px 0;
 }
 
 .navbar {
     display: flex;
-    justify-content: space-between; /* enlaces al centro, buscador a la derecha */
+    justify-content: space-between;
+    /* enlaces al centro, buscador a la derecha */
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
@@ -130,8 +150,10 @@ html {
 .menu {
     list-style: none;
     display: flex;
-    justify-content: center; /* centra los enlaces */
-    flex: 1; /* ocupa el espacio central */
+    justify-content: center;
+    /* centra los enlaces */
+    flex: 1;
+    /* ocupa el espacio central */
     gap: 30px;
     margin: 0;
     padding: 0;
@@ -147,24 +169,40 @@ html {
 
 /* 🔹 EFECTO DE SUBRAYADO ANIMADO (agregar desde aquí) */
 .menu a {
-    position: relative; /* necesario para colocar la línea */
+    position: relative;
+    /* necesario para colocar la línea */
 }
 
 .menu a::after {
     content: "";
     position: absolute;
-    bottom: -4px; /* distancia de la línea respecto al texto */
+    bottom: -4px;
+    /* distancia de la línea respecto al texto */
     left: 50%;
     transform: translateX(-50%);
     width: 0%;
     height: 2px;
-    background-color: #ffb400; /* color de la línea */
+    background-color: #ffb400;
+    /* color de la línea */
+    transition: width 0.3s ease;
+}
+
+.menu a.active::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 2px;
+    bottom: -4px;
+    left: 50%;
+    background-color: #ffb400;
+    transform: translateX(-50%);
     transition: width 0.3s ease;
 }
 
 .menu a:hover::after {
     width: 100%;
 }
+
 /* 🔹 Hasta aquí el agregado */
 
 /* Efecto al pasar el cursor */
@@ -214,31 +252,38 @@ html {
 }
 
 /* ================= BANNER ================= */
-/* Imagen de fondo y degradado para portada principal */
 .banner {
     background-image: linear-gradient(100deg, #000000, #00000020),
         url('../img/banner.jpg');
-    height: 60rem;
+    min-height: 60vh;
+    /* ✅ Altura adaptable */
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* 🔹 texto a la izquierda por defecto */
+    padding: 5rem 8rem;
+    /* 🔹 margen interno más amplio en escritorio */
 }
 
 .content-banner {
-    max-width: 130rem;
-    margin: 0 auto;
-    padding: 20rem 0;
+    max-width: 50rem;
+    /* 🔹 ancho fijo para mejor lectura */
 }
 
 .content-banner p {
     color: var(--primary-color);
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 2vw, 2rem);
     margin-bottom: 1rem;
     font-weight: 650;
 }
 
 .content-banner h2 {
     color: #fff;
-    font-size: 5rem;
+    font-size: clamp(2.5rem, 5vw, 5rem);
     font-weight: 500;
     line-height: 1.2;
 }
@@ -246,19 +291,92 @@ html {
 .content-banner a {
     margin-top: 2rem;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
     color: #fff;
     background-color: var(--primary-color);
     display: inline-block;
     padding: 1rem 3rem;
     text-transform: uppercase;
     border-radius: 3rem;
+    transition: all 0.3s ease;
 }
+
+.content-banner a:hover {
+    background-color: #fff;
+    color: var(--primary-color);
+}
+
+
 
 /* ================= MAIN CONTENT ================= */
 /* Fondo del contenido principal */
 .main-content {
     background-color: var(--background-color);
+}
+
+/* ================= SOBRE NOSOTROS ================= */
+.container-nosotros {
+    background-color: var(--background-color);
+    /* fondo oscuro */
+    color: #000000;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.nosotros-contenido h2 {
+    font-size: 4rem;
+    color: #000000;
+    margin-bottom: 15px;
+}
+
+.nosotros-contenido p {
+    font-size: 1.6rem;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    line-height: 1.7;
+}
+
+.nosotros-caracteristicas {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.nosotros-caracteristicas .item {
+    background-color: #1f1f1f;
+    border-radius: 15px;
+    padding: 25px;
+    width: 300px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.nosotros-caracteristicas .item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 5px 20px rgba(255, 180, 0, 0.2);
+}
+
+.nosotros-caracteristicas img {
+    width: 100%;
+    max-width: 250px;
+    /* límite máximo */
+    height: auto;
+    /* mantiene proporción */
+    border-radius: 15px;
+    margin-bottom: 15px;
+    object-fit: cover;
+    /* recorta sin deformar */
+}
+
+.nosotros-caracteristicas h3 {
+    color: #ffb400;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.nosotros-caracteristicas p {
+    font-size: 1.4rem;
+    color: #ccc;
 }
 
 /* ================= FEATURES ================= */
@@ -332,8 +450,10 @@ html {
     top: 0;
     left: 0;
     z-index: 1;
-    opacity: 0.76; /* reduce la intensidad de la imagen */
-    filter: brightness(80%); /* oscurece ligeramente para que el texto resalte */
+    opacity: 0.76;
+    /* reduce la intensidad de la imagen */
+    filter: brightness(80%);
+    /* oscurece ligeramente para que el texto resalte */
 }
 
 .card-category {
@@ -378,14 +498,14 @@ html {
     border-radius: 1rem;
     font-weight: 500;
 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
-    transition: all 0.3s ease; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
 }
 
 .card-category span:hover {
-    background: #ffffff; 
-    color: var(--primary-color); 
-    transform: translate(-50%, 0) scale(1.1); 
+    background: #ffffff;
+    color: var(--primary-color);
+    transform: translate(-50%, 0) scale(1.1);
 }
 
 /* ================= TOP PRODUCTS ================= */
@@ -1005,16 +1125,19 @@ html {
 }
 
 .billing-details {
-    flex: 2; /* Ocupa 2/3 del espacio */
+    flex: 2;
+    /* Ocupa 2/3 del espacio */
 }
 
 .order-summary {
-    flex: 1; /* Ocupa 1/3 del espacio */
+    flex: 1;
+    /* Ocupa 1/3 del espacio */
     background-color: #fdfdfd;
     border: 1px solid #eee;
     border-radius: 1rem;
     padding: 2.5rem;
-    position: sticky; /* Se queda fijo mientras haces scroll */
+    position: sticky;
+    /* Se queda fijo mientras haces scroll */
     top: 2rem;
 }
 
@@ -1089,7 +1212,8 @@ html {
 /* ================= FOOTER ================= */
 /* === PIE DE PÁGINA === */
 .footer {
-    background-color: var(--primary-color); /* Fondo oscuro principal (puedes definirlo en :root) */
+    background-color: var(--primary-color);
+    /* Fondo oscuro principal (puedes definirlo en :root) */
     color: #fff;
     padding: 4rem 2rem;
     font-size: 1.4rem;
@@ -1104,7 +1228,8 @@ html {
     gap: 3rem;
     max-width: 130rem;
     margin: 0 auto;
-    text-align: center; /* mejor alineado para texto descriptivo */
+    text-align: center;
+    /* mejor alineado para texto descriptivo */
 
 }
 
@@ -1112,7 +1237,8 @@ html {
 .footer-contacto,
 .footer-enlaces,
 .footer-boletin {
-    flex: 1 1 300px; /* se adaptan al ancho del contenedor */
+    flex: 1 1 300px;
+    /* se adaptan al ancho del contenedor */
     min-width: 260px;
 }
 
@@ -1125,7 +1251,8 @@ html {
 
 /* === TÍTULOS === */
 .footer h3 {
-    color: #ffcc66; /* Dorado */
+    color: #ffcc66;
+    /* Dorado */
     margin-bottom: 1rem;
     font-size: 1.8rem;
     text-shadow: 2px 2px 4px rgb(48, 47, 47);
@@ -1134,7 +1261,8 @@ html {
 }
 
 .footer-contacto .contacto-datos strong {
-    color: #42403c; /* color de acento */
+    color: #42403c;
+    /* color de acento */
     font-weight: 600;
 
 }
@@ -1164,7 +1292,8 @@ html {
 
 .footer-enlaces a:hover,
 .footer-enlaces a.active {
-    color: #ffcc66; /* Dorado al pasar el mouse o al estar activo */
+    color: #ffcc66;
+    /* Dorado al pasar el mouse o al estar activo */
 }
 
 /* === FORMULARIO DEL BOLETÍN === */
@@ -1200,10 +1329,13 @@ html {
 
 .footer-redes {
     display: flex;
-    flex-direction: row; /* 👉 en fila horizontal */
-    justify-content: center; /* centra las redes */
+    flex-direction: row;
+    /* 👉 en fila horizontal */
+    justify-content: center;
+    /* centra las redes */
     align-items: center;
-    gap: 1.5rem; /* separación entre íconos */
+    gap: 1.5rem;
+    /* separación entre íconos */
     margin-top: 1.5rem;
 }
 
@@ -1252,15 +1384,47 @@ html {
 }
 
 /* ================= RESPONSIVE ================= */
-/* Adaptación para pantallas pequeñas */
-@media (max-width: 900px) {
 
+/* 🔹 Tablets y pantallas medianas (hasta 1024px) */
+@media screen and (max-width: 1024px) {
+
+    /* Hero: soporte, logo y usuario vertical */
+    .hero {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    /* Reducir tamaño de iconos */
+    .icono-soporte,
+    .icono-logo,
+    .icono-usuario,
+    .icono-carrito {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* Reducir tamaño de logo */
+    .logo a {
+        font-size: 2.5rem;
+    }
+
+    /* Reducir ancho del buscador */
+    .search-form input {
+        width: 18rem;
+    }
+}
+
+/* 🔹 Tablets y pantallas medianas adicionales (hasta 900px) */
+@media screen and (max-width: 900px) {
+
+    /* Hero y footer se acomodan verticalmente */
     .hero,
     .footer-container {
         flex-direction: column;
         align-items: flex-start;
     }
 
+    /* Grillas de categorías, productos y galería */
     .container-categories,
     .container-products,
     .gallery {
@@ -1268,21 +1432,117 @@ html {
         gap: 2rem;
     }
 
+    /* Footer secciones */
     .footer-contacto,
     .footer-enlaces,
     .footer-boletin {
         margin-bottom: 1rem;
     }
 
-    .content-banner {
-        padding: 10rem 0;
+    /* Secciones de carrito y checkout */
+    .cart-section,
+    .checkout-section {
+        flex-direction: column;
     }
 
-    .cart-section {
-        flex-direction: column;
-        
+    /* Padding de banner */
+    .content-banner {
+        padding: 8rem 2rem;
     }
-    .checkout-section {
-        flex-direction: column-reverse; 
+}
+
+/* 🔹 Celulares medianos (hasta 768px) */
+@media screen and (max-width: 768px) {
+
+    /* Navbar contenedor */
+    .navbar {
+        position: relative;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 10px 15px;
+        /* espaciado interno */
+    }
+
+    /* Mostrar hamburguesa */
+    .hamburger {
+        display: flex;
+        order: 1;
+    }
+
+    /* Menú oculto por defecto */
+    .menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: #1f1f1f;
+        flex-direction: column;
+        width: 200px;
+        display: none;
+        padding: 10px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        gap: 0;
+    }
+
+    .menu.show {
+        display: flex;
+    }
+
+    .menu li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    /* Buscador ajustado */
+    .search-form {
+        display: flex;
+        width: 90%;
+        border-radius: 2rem;
+        overflow: hidden;
+        align-items: center;
+        height: 4rem;
+    }
+
+    .search-form input {
+        flex: 1;
+        /* ocupa todo el espacio restante */
+        padding: 0 1.5rem;
+        font-size: 1.3rem;
+        border: none;
+        outline: none;
+    }
+
+    .search-form .btn-search {
+        width: 50px;
+        /* botón cuadrado */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--primary-color);
+        border: none;
+        cursor: pointer;
+    }
+
+    .search-form .btn-search img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+
+/* 🔹 Celulares pequeños (hasta 600px) */
+@media screen and (max-width: 600px) {
+
+    /* Banner más pequeño */
+    .banner {
+        min-height: 50vh;
+        padding: 4rem 1rem;
+    }
+
+    .content-banner h2 {
+        font-size: 2.5rem;
+    }
+
+    .content-banner p {
+        font-size: 1.4rem;
     }
 }

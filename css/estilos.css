@@ -18,11 +18,18 @@ html {
     font-family: 'Poppins', sans-serif;
 }
 
-/* Reset de márgenes y paddings */
+/* Previene desbordamientos horizontales */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 /* ================= UTILIDADES ================= */
@@ -51,7 +58,7 @@ html {
     /* distancia desde el borde derecho */
     top: 20px;
     /* ajusta según tu diseño */
-    display: block;
+    display: none;
 }
 
 .nav-toggle .bar {
@@ -416,6 +423,7 @@ html {
     border-radius: 1rem;
     padding: 1.5rem 0;
     box-shadow: 3px 6px 6px #323131;
+    width: 100%;
 }
 
 .icono-feature {
@@ -1460,100 +1468,23 @@ html {
         height: 30px;
     }
 
-    /* Reducir tamaño de logo */
-    .logo a {
-        font-size: 2.5rem;
-    }
-
     /* Reducir ancho del buscador */
     .search-form input {
         width: 18rem;
     }
+
+    .container-features {
+        justify-items: center;       /* Centra cada card horizontalmente */
+        text-align: center;          /* Centra el contenido de texto */
+        padding: 0 2rem;
+    }
+
 }
+
 
 /* ================= MENU RESPONSIVE ================= */
 @media (max-width: 900px) {
-
-    /* Oculta los enlaces y ajusta la estructura */
-    .menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 70%;
-        height: 100vh;
-        background-color: #1f1f1f;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 3rem;
-        transition: right 0.4s ease;
-        z-index: 90;
-    }
-
-    /* Cuando el checkbox está activado, muestra el menú */
-    .menu-toggle:checked ~ .menu {
-        right: 0;
-    }
-
-    /* Muestra el icono hamburguesa */
-    .nav-toggle {
-        display: block;
-        position: absolute;
-        right: 20px;
-        top: 20px;
-        z-index: 100;
-        cursor: pointer;
-    }
-
-    /* Ajusta el tamaño de las barras */
-    .nav-toggle .bar {
-        background: #fff;
-        width: 25px;
-        height: 3px;
-        margin: 5px auto;
-        transition: all 0.3s ease;
-    }
-
-    /* Efecto al activar */
-    .menu-toggle:checked + .nav-toggle .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    .menu-toggle:checked + .nav-toggle .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    .menu-toggle:checked + .nav-toggle .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-
-    /* Ajustes visuales del menú */
-    .menu li {
-        list-style: none;
-    }
-
-    .menu a {
-        color: #fff;
-        font-size: 2rem;
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    .menu a:hover {
-        color: #ffb400;
-    }
-
-    /* Oculta el buscador en móviles */
-    .search-form {
-        display: none;
-    }
-}
-
-
-/* 🔹 Celulares medianos (hasta 768px) */
-@media screen and (max-width: 768px) {
-
+    
     /* Navbar contenedor */
     .navbar {
         position: relative;
@@ -1561,20 +1492,6 @@ html {
         justify-content: space-between;
         padding: 10px 15px;
         /* espaciado interno */
-    }
-
-    /* Menú oculto por defecto */
-    .menu {
-        position: absolute;
-        top: 100%;
-        right: 0;
-        background-color: #1f1f1f;
-        flex-direction: column;
-        width: 200px;
-        display: none;
-        padding: 10px 0;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        gap: 0;
     }
 
     .menu.show {
@@ -1624,15 +1541,16 @@ html {
     .menu-toggle:checked~.menu {
         left: 0;
         opacity: 1;
+        display: flex;
     }
 
     .menu {
         position: fixed;
         top: 0;
         left: -100%;
-        width: 80%;
+        width: 100%;
         height: 100vh;
-        background: var(--dark);
+        background: #1f1f1f;
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -1654,12 +1572,141 @@ html {
         z-index: 100;
         /* Asegura que quede encima del contenido */
     }
+    .menu a {
+        font-size: 2.5rem;
+    }
+
+    .container-features {
+        justify-items: center;       /* Centra cada card horizontalmente */
+        text-align: center;          /* Centra el contenido de texto */
+    }
+
+    .card-feature {
+        width: 90%; /* Un poco más ancha en celulares pequeños */
+        flex-direction: column; /* Ícono arriba, texto abajo */
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+
+    .feature-content {
+        margin-left: 0; /* Centra el texto */
+    }
+    
+}
+
+
+/* 🔹 Celulares medianos (hasta 768px) */
+@media screen and (max-width: 768px) {
+    
+    /* Navbar contenedor */
+    .navbar {
+        position: relative;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 10px 15px;
+        /* espaciado interno */
+    }
+
+    .menu.show {
+        display: flex;
+    }
+
+    .menu li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    /* Buscador ajustado */
+    .search-form {
+        display: flex;
+        width: 90%;
+        border-radius: 2rem;
+        overflow: hidden;
+        align-items: center;
+        height: 4rem;
+    }
+
+    .search-form input {
+        flex: 1;
+        /* ocupa todo el espacio restante */
+        padding: 0 1.5rem;
+        font-size: 1.3rem;
+        border: none;
+        outline: none;
+    }
+
+    .search-form .btn-search {
+        width: 50px;
+        /* botón cuadrado */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--primary-color);
+        border: none;
+        cursor: pointer;
+    }
+
+    .search-form .btn-search img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .menu-toggle:checked~.menu {
+        left: 0;
+        opacity: 1;
+        display: flex;
+    }
+
+    .menu {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background: #1f1f1f;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        transition: left 0.5s ease, opacity 0.3s ease;
+        opacity: 0;
+        z-index: 99;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-toggle {
+        display: block;
+        position: absolute;
+        right: 15px;
+        /* Lo mueve hacia el borde derecho */
+        top: 20px;
+        /* Ajusta su altura */
+        cursor: pointer;
+        z-index: 100;
+        /* Asegura que quede encima del contenido */
+    }
+
+    .container-features {
+        justify-items: center;       /* Centra cada card horizontalmente */
+        text-align: center;          /* Centra el contenido de texto */
+    }
+
+    .card-feature {
+        width: 90%; /* Un poco más ancha en celulares pequeños */
+        flex-direction: column; /* Ícono arriba, texto abajo */
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+
+    .feature-content {
+        margin-left: 0; /* Centra el texto */
+    }
 }
 
 
 /* 🔹 Celulares pequeños (hasta 600px) */
 @media screen and (max-width: 600px) {
-
+    
     /* Banner más pequeño */
     .banner {
         min-height: 50vh;
@@ -1683,9 +1730,9 @@ html {
         position: fixed;
         top: 0;
         left: -100%;
-        width: 80%;
+        width: 100%;
         height: 100vh;
-        background: var(--dark);
+        background: #1f1f1f;
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -1706,5 +1753,22 @@ html {
         cursor: pointer;
         z-index: 100;
         /* Asegura que quede encima del contenido */
+    }
+    
+    .container-features {
+        justify-items: center;       /* Centra cada card horizontalmente */
+        text-align: center;          /* Centra el contenido de texto */
+    }
+    
+
+    .card-feature {
+        width: 90%; /* Un poco más ancha en celulares pequeños */
+        flex-direction: column; /* Ícono arriba, texto abajo */
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+
+    .feature-content {
+        margin-left: 0; /* Centra el texto */
     }
 }

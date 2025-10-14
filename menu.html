@@ -50,13 +50,15 @@
         <div class="container-navbar">
             <nav class="navbar container">
 
-                 <!-- Hamburguesa -->
-                <div class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+                <!-- Hamburguesa -->
+                <input type="checkbox" id="menu-toggle" class="menu-toggle">
+                <label for="menu-toggle" class="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </label>
 
+                <!-- Menú de enlaces -->
                 <ul class="menu">
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="menu.html" class="active">Menú</a></li>
@@ -66,14 +68,17 @@
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
 
+                <!-- Buscador -->
                 <form class="search-form">
                     <input type="search" placeholder="Buscar..." />
                     <button class="btn-search">
                         <img src="img/buscar.png" alt="Buscar" class="icono-buscar" />
                     </button>
                 </form>
+
             </nav>
         </div>
+
     </header>
     <main class="main-content">
 

@@ -25,7 +25,8 @@ html {
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -1474,8 +1475,10 @@ html, body {
     }
 
     .container-features {
-        justify-items: center;       /* Centra cada card horizontalmente */
-        text-align: center;          /* Centra el contenido de texto */
+        justify-items: center;
+        /* Centra cada card horizontalmente */
+        text-align: center;
+        /* Centra el contenido de texto */
         padding: 0 2rem;
     }
 
@@ -1484,7 +1487,7 @@ html, body {
 
 /* ================= MENU RESPONSIVE ================= */
 @media (max-width: 900px) {
-    
+
     /* Navbar contenedor */
     .navbar {
         position: relative;
@@ -1572,32 +1575,38 @@ html, body {
         z-index: 100;
         /* Asegura que quede encima del contenido */
     }
+
     .menu a {
         font-size: 2.5rem;
     }
 
     .container-features {
-        justify-items: center;       /* Centra cada card horizontalmente */
-        text-align: center;          /* Centra el contenido de texto */
+        justify-items: center;
+        /* Centra cada card horizontalmente */
+        text-align: center;
+        /* Centra el contenido de texto */
     }
 
     .card-feature {
-        width: 90%; /* Un poco más ancha en celulares pequeños */
-        flex-direction: column; /* Ícono arriba, texto abajo */
+        width: 90%;
+        /* Un poco más ancha en celulares pequeños */
+        flex-direction: column;
+        /* Ícono arriba, texto abajo */
         text-align: center;
         padding: 2rem 1rem;
     }
 
     .feature-content {
-        margin-left: 0; /* Centra el texto */
+        margin-left: 0;
+        /* Centra el texto */
     }
-    
+
 }
 
 
 /* 🔹 Celulares medianos (hasta 768px) */
 @media screen and (max-width: 768px) {
-    
+
     /* Navbar contenedor */
     .navbar {
         position: relative;
@@ -1687,26 +1696,31 @@ html, body {
     }
 
     .container-features {
-        justify-items: center;       /* Centra cada card horizontalmente */
-        text-align: center;          /* Centra el contenido de texto */
+        justify-items: center;
+        /* Centra cada card horizontalmente */
+        text-align: center;
+        /* Centra el contenido de texto */
     }
 
     .card-feature {
-        width: 90%; /* Un poco más ancha en celulares pequeños */
-        flex-direction: column; /* Ícono arriba, texto abajo */
+        width: 90%;
+        /* Un poco más ancha en celulares pequeños */
+        flex-direction: column;
+        /* Ícono arriba, texto abajo */
         text-align: center;
         padding: 2rem 1rem;
     }
 
     .feature-content {
-        margin-left: 0; /* Centra el texto */
+        margin-left: 0;
+        /* Centra el texto */
     }
 }
 
 
 /* 🔹 Celulares pequeños (hasta 600px) */
 @media screen and (max-width: 600px) {
-    
+
     /* Banner más pequeño */
     .banner {
         min-height: 50vh;
@@ -1754,21 +1768,34 @@ html, body {
         z-index: 100;
         /* Asegura que quede encima del contenido */
     }
-    
-    .container-features {
-        justify-items: center;       /* Centra cada card horizontalmente */
-        text-align: center;          /* Centra el contenido de texto */
-    }
-    
 
+    .container-categories,
+    .container-features {
+        grid-template-columns: 1fr;
+        /* Una tarjeta por fila */
+        justify-items: center;
+        /* Centra cada card horizontalmente */
+        text-align: center;
+        /* Centra el contenido de texto */
+    }
+
+    .top-categories h1 {
+        margin-top: 2rem;
+        /* espacio debajo del título */
+    }
+
+    .card-category,
     .card-feature {
-        width: 90%; /* Un poco más ancha en celulares pequeños */
-        flex-direction: column; /* Ícono arriba, texto abajo */
+        width: 90%;
+        /* Un poco más ancha en celulares pequeños */
+        flex-direction: column;
+        /* Ícono arriba, texto abajo */
         text-align: center;
         padding: 2rem 1rem;
     }
 
     .feature-content {
-        margin-left: 0; /* Centra el texto */
+        margin-left: 0;
+        /* Centra el texto */
     }
 }

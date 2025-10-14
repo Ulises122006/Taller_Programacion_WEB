@@ -1601,7 +1601,36 @@ body {
         /* Centra el texto */
     }
 
-}
+    
+    .product-detail-section {
+        padding: 2rem;
+        flex-direction: column;
+        /* 🔹 Cambia de horizontal a vertical */
+        align-items: center;
+        /* Centra los elementos */
+        text-align: center;
+        /* Centra el texto */
+    }
+
+    .product-gallery {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .product-details-content {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .product-description {
+        text-align: justify;
+        /* Opcional, para una mejor lectura */
+    }
+
+    .related-products h2 {
+        text-align: center;
+    }
+    }
 
 
 /* 🔹 Celulares medianos (hasta 768px) */
@@ -1715,6 +1744,78 @@ body {
         margin-left: 0;
         /* Centra el texto */
     }
+
+    .container-categories,
+    .container-features {
+        grid-template-columns: 1fr;
+        /* Una tarjeta por fila */
+        justify-items: center;
+        /* Centra cada card horizontalmente */
+        text-align: center;
+        /* Centra el contenido de texto */
+    }
+
+    .product-category h2,
+    .top-categories h1 {
+        text-align: center;
+        margin-top: 2rem;
+        /* espacio debajo del título */
+    }
+
+    .card-category,
+    .card-feature {
+        justify-content: center;
+        width: 90%;
+        /* Un poco más ancha en celulares pequeños */
+        flex-direction: column;
+        /* Ícono arriba, texto abajo */
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+
+    .feature-content {
+        margin-left: 0;
+        /* Centra el texto */
+    }
+
+    .menu-products {
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        /* Centra las tarjetas horizontalmente */
+        gap: 2rem;
+        /* Espacio entre tarjetas */
+    }
+
+    .product-detail-section {
+        padding: 2rem;
+        flex-direction: column;
+        /* 🔹 Cambia de horizontal a vertical */
+        align-items: center;
+        /* Centra los elementos */
+        text-align: center;
+        /* Centra el texto */
+    }
+
+    .product-gallery {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .product-details-content {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .product-description {
+        text-align: justify;
+        /* Opcional, para una mejor lectura */
+    }
+
+    .related-products h2 {
+        text-align: center;
+    }
+
 }
 
 
@@ -1779,13 +1880,16 @@ body {
         /* Centra el contenido de texto */
     }
 
+    .product-category h2,
     .top-categories h1 {
+        text-align: center;
         margin-top: 2rem;
         /* espacio debajo del título */
     }
 
     .card-category,
     .card-feature {
+        justify-content: center;
         width: 90%;
         /* Un poco más ancha en celulares pequeños */
         flex-direction: column;
@@ -1797,5 +1901,63 @@ body {
     .feature-content {
         margin-left: 0;
         /* Centra el texto */
+    }
+
+    .menu-products {
+        display: flex;
+        flex-direction: column;
+        /* Pone las tarjetas una debajo de otra */
+        align-items: center;
+        /* Centra las tarjetas horizontalmente */
+        gap: 2rem;
+        /* Espacio entre tarjetas */
+    }
+
+    .card-product {
+        justify-content: center;
+        width: 90%;
+        /* Ocupa la mayoría del ancho */
+        flex-direction: column;
+        /* Imagen arriba, texto abajo */
+        text-align: center;
+        padding: 2rem 1rem;
+        margin: 0 auto;
+        /* Asegura centrado */
+    }
+
+    .card-product img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 1rem;
+        /* Opcional: mejora el diseño */
+    }
+
+    .product-detail-section {
+        padding: 2rem;
+        flex-direction: column;
+        /* 🔹 Cambia de horizontal a vertical */
+        align-items: center;
+        /* Centra los elementos */
+        text-align: center;
+        /* Centra el texto */
+    }
+
+    .product-gallery {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .product-details-content {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .product-description {
+        text-align: justify;
+        /* Opcional, para una mejor lectura */
+    }
+
+    .related-products h2 {
+        text-align: center;
     }
 }

@@ -193,7 +193,6 @@ body {
     transition: color 0.3s;
 }
 
-/* 🔹 EFECTO DE SUBRAYADO ANIMADO (agregar desde aquí) */
 .menu a {
     position: relative;
     /* necesario para colocar la línea */

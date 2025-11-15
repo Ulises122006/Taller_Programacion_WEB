@@ -184,18 +184,13 @@ body {
     margin: 0;
     padding: 0;
 }
-
 .menu a {
     color: white;
     text-decoration: none;
     font-size: 1.3rem;
     font-weight: bold;
     transition: color 0.3s;
-}
-
-.menu a {
     position: relative;
-    /* necesario para colocar la línea */
 }
 
 .menu a::after {
@@ -697,6 +692,7 @@ body {
     padding: 1rem;
     border-radius: 50%;
     cursor: pointer;
+    pointer-events: auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1061,6 +1057,7 @@ body {
     width: 100%;
     margin-top: 4rem;
     padding-bottom: 4rem;
+    padding-left: 40px;
 }
 
 .related-title {
@@ -1329,6 +1326,69 @@ body {
     font-weight: 500;
 }
 
+/*Validacion de Pagos*/
+/* ===============================
+      TOAST (mensajes flotantes)
+================================*/
+.toast-footer {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    background: #28a745; /* verde éxito */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    opacity: 0;
+    z-index: 9999;
+    transition: 0.3s ease-in-out;
+}
+
+/* ERROR */
+.toast-footer.error {
+    background: #d9534f; /* rojo */
+}
+
+/* Animación cuando aparece */
+.toast-footer.show {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+
+/* ===============================
+CAMPOS DE TARJETA OPCIONALES
+================================*/
+.card-fields {
+    display: none;
+    /* Ocultos hasta que se elija tarjeta */
+    margin-top: 1.2rem;
+    padding: 15px;
+    background: #f7f2ec;
+    border-radius: 8px;
+}
+
+.card-fields label {
+    font-weight: 600;
+    color: #5a3e2b;
+}
+
+.card-fields input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    margin-bottom: 14px;
+    border: 1px solid #d1c1b1;
+    border-radius: 6px;
+}
+
+/* Resaltar inputs inválidos (se activa desde JS si lo quieres) */
+.input-error {
+    border-color: red !important;
+}
+
 /* Resumen del pedido */
 .summary-items {
     border-bottom: 1px solid #eee;
@@ -1395,7 +1455,6 @@ body {
     min-width: 260px;
 }
 
-/* 🔧 Corrección del selector: faltaba el punto (.) */
 .footer .contacto-datos {
     display: block;
     margin-bottom: 0.6rem;
@@ -1515,17 +1574,6 @@ body {
 /* === DERECHOS DE AUTOR === */
 .footer-copy {
     text-align: center;
-    border-top: 0.1rem solid rgba(255, 255, 255, 0.3);
-    margin-top: 3rem;
-    padding-top: 1rem;
-    font-size: 1.3rem;
-    color: #ddd;
-}
-
-
-/* === DERECHOS DE AUTOR === */
-.footer-copy {
-    text-align: center;
     border-top: 0.15rem solid #2a1b1b;
     /* Línea divisoria superior */
     margin-top: 3rem;
@@ -1537,17 +1585,22 @@ body {
 }
 
 /* ================= RESPONSIVE ================= */
+/* =====================================================
+   🔹 RESPONSIVE OPTIMIZADO (3 BREAKPOINTS)
+   ===================================================== */
 
-/* 🔹 Tablets y pantallas medianas (hasta 1024px) */
+/* ================================
+   📱 Tablets — max-width: 1024px
+   ================================ */
 @media screen and (max-width: 1024px) {
 
-    /* Hero: soporte, logo y usuario vertical */
+    /* Hero vertical */
     .hero {
         flex-direction: column;
         gap: 1.5rem;
     }
 
-    /* Reducir tamaño de iconos */
+    /* Iconos más pequeños */
     .icono-soporte,
     .icono-logo,
     .icono-usuario,
@@ -1556,25 +1609,24 @@ body {
         height: 30px;
     }
 
-    /* Reducir ancho del buscador */
+    /* Buscador más pequeño */
     .search-form input {
         width: 18rem;
     }
 
+    /* Centrado de features */
     .container-features {
         justify-items: center;
-        /* Centra cada card horizontalmente */
         text-align: center;
-        /* Centra el contenido de texto */
         padding: 0 2rem;
     }
 
-    /** RECOMENDACION PRODUCTOS **/
+    /* RecomendaDOS */
     .related-grid {
-        justify-content: center; 
-        gap: 2.5rem;             
-        flex-wrap: wrap;         
-        padding: 0 1.5rem;       
+        justify-content: center;
+        gap: 2.5rem;
+        flex-wrap: wrap;
+        padding: 0 1.5rem;
     }
 
     .item-card {
@@ -1589,72 +1641,27 @@ body {
         font-size: 1.8rem;
         text-align: center;
     }
-
 }
 
 
-/* ================= MENU RESPONSIVE ================= */
+/* ==========================================
+   📱 Celulares Grandes — max-width: 900px
+   ========================================== */
 @media (max-width: 900px) {
 
-    /* Navbar contenedor */
+    /* NAVBAR */
     .navbar {
         position: relative;
         flex-wrap: wrap;
         justify-content: space-between;
         padding: 10px 15px;
-        /* espaciado interno */
     }
 
     .menu.show {
         display: flex;
     }
 
-    .menu li {
-        margin: 10px 0;
-        text-align: center;
-    }
-
-    /* Buscador ajustado */
-    .search-form {
-        display: flex;
-        width: 90%;
-        border-radius: 2rem;
-        overflow: hidden;
-        align-items: center;
-        height: 4rem;
-    }
-
-    .search-form input {
-        flex: 1;
-        /* ocupa todo el espacio restante */
-        padding: 0 1.5rem;
-        font-size: 1.3rem;
-        border: none;
-        outline: none;
-    }
-
-    .search-form .btn-search {
-        width: 50px;
-        /* botón cuadrado */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: var(--primary-color);
-        border: none;
-        cursor: pointer;
-    }
-
-    .search-form .btn-search img {
-        width: 20px;
-        height: 20px;
-    }
-
-    .menu-toggle:checked~.menu {
-        left: 0;
-        opacity: 1;
-        display: flex;
-    }
-
+    /* Menú desplegable */
     .menu {
         position: fixed;
         top: 0;
@@ -1666,80 +1673,80 @@ body {
         align-items: center;
         justify-content: center;
         gap: 2rem;
-        transition: left 0.5s ease, opacity 0.3s ease;
+        transition: left .5s ease, opacity .3s ease;
         opacity: 0;
         z-index: 99;
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .menu-toggle:checked ~ .menu {
+        left: 0;
+        opacity: 1;
     }
 
     .nav-toggle {
         display: block;
         position: absolute;
         right: 15px;
-        /* Lo mueve hacia el borde derecho */
         top: 20px;
-        /* Ajusta su altura */
         cursor: pointer;
         z-index: 100;
-        /* Asegura que quede encima del contenido */
     }
 
     .menu a {
         font-size: 2.5rem;
     }
 
-    .container-features {
-        justify-items: center;
-        /* Centra cada card horizontalmente */
-        text-align: center;
-        /* Centra el contenido de texto */
+    /* Buscador */
+    .search-form {
+        width: 90%;
+        height: 4rem;
     }
 
-    .card-feature {
+    .search-form input {
+        flex: 1;
+        padding: 0 1.5rem;
+        font-size: 1.3rem;
+    }
+
+    /* Features, categorías, galería */
+    .container-features,
+    .container-categories {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+    }
+
+    .card-feature,
+    .card-category {
         width: 90%;
-        /* Un poco más ancha en celulares pequeños */
         flex-direction: column;
-        /* Ícono arriba, texto abajo */
         text-align: center;
         padding: 2rem 1rem;
     }
 
-    .feature-content {
-        margin-left: 0;
-        /* Centra el texto */
+    /* Productos */
+    .menu-products {
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
     }
 
-
+    /* Detalles */
     .product-detail-section {
         padding: 2rem;
         flex-direction: column;
-        /* 🔹 Cambia de horizontal a vertical */
         align-items: center;
-        /* Centra los elementos */
         text-align: center;
-        /* Centra el texto */
     }
 
-    .product-gallery {
-        width: 100%;
-        max-width: 400px;
-    }
-
+    .product-gallery,
     .product-details-content {
         width: 100%;
-        max-width: 500px;
+        max-width: 420px;
     }
 
-    .product-description {
-        text-align: justify;
-        /* Opcional, para una mejor lectura */
-    }
-
-    .related-products h2 {
-        text-align: center;
-    }
-
-    /** RECOMENDACION PRODUCTOS **/
+    /* Recomendados */
     .related-grid {
         justify-content: center;
         gap: 2rem;
@@ -1749,222 +1756,14 @@ body {
         width: 220px;
     }
 
-    .related-title {
-        font-size: 1.6rem;
-        text-align: center;
-    }
 }
 
 
-/* 🔹 Celulares medianos (hasta 768px) */
-@media screen and (max-width: 768px) {
-
-    /* Navbar contenedor */
-    .navbar {
-        position: relative;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        padding: 10px 15px;
-        /* espaciado interno */
-    }
-
-    .menu.show {
-        display: flex;
-    }
-
-    .menu li {
-        margin: 10px 0;
-        text-align: center;
-    }
-
-    /* Buscador ajustado */
-    .search-form {
-        display: flex;
-        width: 90%;
-        border-radius: 2rem;
-        overflow: hidden;
-        align-items: center;
-        height: 4rem;
-    }
-
-    .search-form input {
-        flex: 1;
-        /* ocupa todo el espacio restante */
-        padding: 0 1.5rem;
-        font-size: 1.3rem;
-        border: none;
-        outline: none;
-    }
-
-    .search-form .btn-search {
-        width: 50px;
-        /* botón cuadrado */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: var(--primary-color);
-        border: none;
-        cursor: pointer;
-    }
-
-    .search-form .btn-search img {
-        width: 20px;
-        height: 20px;
-    }
-
-    .menu-toggle:checked~.menu {
-        left: 0;
-        opacity: 1;
-        display: flex;
-    }
-
-    .menu {
-        position: fixed;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100vh;
-        background: #1f1f1f;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 2rem;
-        transition: left 0.5s ease, opacity 0.3s ease;
-        opacity: 0;
-        z-index: 99;
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .nav-toggle {
-        display: block;
-        position: absolute;
-        right: 15px;
-        /* Lo mueve hacia el borde derecho */
-        top: 20px;
-        /* Ajusta su altura */
-        cursor: pointer;
-        z-index: 100;
-        /* Asegura que quede encima del contenido */
-    }
-
-    .container-features {
-        justify-items: center;
-        /* Centra cada card horizontalmente */
-        text-align: center;
-        /* Centra el contenido de texto */
-    }
-
-    .card-feature {
-        width: 90%;
-        /* Un poco más ancha en celulares pequeños */
-        flex-direction: column;
-        /* Ícono arriba, texto abajo */
-        text-align: center;
-        padding: 2rem 1rem;
-    }
-
-    .feature-content {
-        margin-left: 0;
-        /* Centra el texto */
-    }
-
-    .container-categories,
-    .container-features {
-        grid-template-columns: 1fr;
-        /* Una tarjeta por fila */
-        justify-items: center;
-        /* Centra cada card horizontalmente */
-        text-align: center;
-        /* Centra el contenido de texto */
-    }
-
-    .product-category h2,
-    .top-categories h1 {
-        text-align: center;
-        margin-top: 2rem;
-        /* espacio debajo del título */
-    }
-
-    .card-category,
-    .card-feature {
-        justify-content: center;
-        width: 90%;
-        /* Un poco más ancha en celulares pequeños */
-        flex-direction: column;
-        /* Ícono arriba, texto abajo */
-        text-align: center;
-        padding: 2rem 1rem;
-    }
-
-    .feature-content {
-        margin-left: 0;
-        /* Centra el texto */
-    }
-
-    .menu-products {
-        justify-content: center;
-        display: flex;
-        align-items: center;
-        /* Centra las tarjetas horizontalmente */
-        gap: 2rem;
-        /* Espacio entre tarjetas */
-    }
-
-    .product-detail-section {
-        padding: 2rem;
-        flex-direction: column;
-        /* 🔹 Cambia de horizontal a vertical */
-        align-items: center;
-        /* Centra los elementos */
-        text-align: center;
-        /* Centra el texto */
-    }
-
-    .product-gallery {
-        width: 100%;
-        max-width: 400px;
-    }
-
-    .product-details-content {
-        width: 100%;
-        max-width: 500px;
-    }
-
-    .product-description {
-        text-align: justify;
-        /* Opcional, para una mejor lectura */
-    }
-
-    .related-products h2 {
-        text-align: center;
-    }
-
-    /** RECOMENDACION PRODUCTOS **/
-    .related-grid {
-        justify-content: center;
-        gap: 1.5rem;
-    }
-
-    .item-card {
-        width: 200px;
-    }
-
-    .item-content h3 {
-        font-size: 1.2rem;
-    }
-
-    .related-title {
-        font-size: 1.6rem;
-        text-align: center;
-    }
-
-}
-
-
-/* 🔹 Celulares pequeños (hasta 600px) */
+/* ==========================================
+   📱 Celulares Pequeños — max-width: 600px
+   ========================================== */
 @media screen and (max-width: 600px) {
 
-    /* Banner más pequeño */
     .banner {
         min-height: 50vh;
         padding: 4rem 1rem;
@@ -1978,132 +1777,50 @@ body {
         font-size: 1.4rem;
     }
 
-    .menu-toggle:checked~.menu {
+    /* Menú móvil */
+    .menu-toggle:checked ~ .menu {
         left: 0;
         opacity: 1;
     }
 
-    .menu {
-        position: fixed;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100vh;
-        background: #1f1f1f;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 2rem;
-        transition: left 0.5s ease, opacity 0.3s ease;
-        opacity: 0;
-        z-index: 99;
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
-    }
-
     .nav-toggle {
-        display: block;
-        position: absolute;
         right: 15px;
-        /* Lo mueve hacia el borde derecho */
         top: 20px;
-        /* Ajusta su altura */
-        cursor: pointer;
-        z-index: 100;
-        /* Asegura que quede encima del contenido */
     }
 
+    /* Categorías de una en una */
     .container-categories,
     .container-features {
         grid-template-columns: 1fr;
-        /* Una tarjeta por fila */
-        justify-items: center;
-        /* Centra cada card horizontalmente */
-        text-align: center;
-        /* Centra el contenido de texto */
     }
 
-    .product-category h2,
-    .top-categories h1 {
-        text-align: center;
-        margin-top: 2rem;
-        /* espacio debajo del título */
-    }
-
-    .card-category,
-    .card-feature {
-        justify-content: center;
-        width: 90%;
-        /* Un poco más ancha en celulares pequeños */
-        flex-direction: column;
-        /* Ícono arriba, texto abajo */
-        text-align: center;
-        padding: 2rem 1rem;
-    }
-
-    .feature-content {
-        margin-left: 0;
-        /* Centra el texto */
-    }
-
+    /* Productos verticales */
     .menu-products {
-        display: flex;
         flex-direction: column;
-        /* Pone las tarjetas una debajo de otra */
         align-items: center;
-        /* Centra las tarjetas horizontalmente */
         gap: 2rem;
-        /* Espacio entre tarjetas */
     }
 
     .card-product {
-        justify-content: center;
         width: 90%;
-        /* Ocupa la mayoría del ancho */
-        flex-direction: column;
-        /* Imagen arriba, texto abajo */
         text-align: center;
         padding: 2rem 1rem;
         margin: 0 auto;
-        /* Asegura centrado */
-    }
-
-    .card-product img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 1rem;
-        /* Opcional: mejora el diseño */
     }
 
     .product-detail-section {
         padding: 2rem;
         flex-direction: column;
-        /* 🔹 Cambia de horizontal a vertical */
         align-items: center;
-        /* Centra los elementos */
         text-align: center;
-        /* Centra el texto */
     }
 
-    .product-gallery {
-        width: 100%;
-        max-width: 400px;
-    }
-
+    .product-gallery,
     .product-details-content {
         width: 100%;
-        max-width: 500px;
     }
 
-    .product-description {
-        text-align: justify;
-        /* Opcional, para una mejor lectura */
-    }
-
-    .related-products h2 {
-        text-align: center;
-    }
-
-    /** RECOMENDACION PRODUCTOS **/
+    /* Recomendados */
     .related-grid {
         flex-direction: column;
         align-items: center;
@@ -2117,11 +1834,132 @@ body {
     .item-img {
         height: 180px;
     }
+}
 
-    .related-title {
-        font-size: 1.6rem;
-        text-align: center;
-    }
 
-    
+/* ===== MODALES (VENTANAS FLOTANTES) ===== */
+/* ================================
+   MODAL DE PEDIDO REALIZADO
+================================ */
+
+.modal-pedido-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: none; /* Se activa desde JS */
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+.modal-pedido {
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    text-align: center;
+    width: 90%;
+    max-width: 420px;
+    transform: scale(0.7);
+    opacity: 0;
+    transition: all .3s ease;
+}
+
+.modal-pedido.show {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.modal-pedido-buttons {
+    margin-top: 1.8rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.modal-pedido-buttons button {
+    flex: 1;
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-seguir {
+    background: #ccc;
+}
+
+.btn-ver-carrito {
+    background: #d59b2f;
+    color: #fff;
+}
+
+
+
+/* ===========================
+      MODAL CONTACTO
+      (VALIDACIÓN FORMULARIO)
+=========================== */
+
+.modal-confirm {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeIn .3s ease;
+}
+
+.modal-confirm .modal-content {
+    background: #fff;
+    padding: 30px 35px;
+    width: 380px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,.25);
+    animation: slideUp .35s ease;
+}
+
+.modal-confirm h3 {
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+.modal-confirm p {
+    margin-bottom: 20px;
+    color: #555;
+    font-size: 1.6rem;  /* Aumenta el tamaño */
+    line-height: 1.6;   /* Mejora la lectura */
+}
+
+.modal-confirm button {
+    padding: 10px 22px;
+    border: none;
+    background: #c89b76;
+    color: white;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.modal-confirm button:hover {
+    background: #b48762;
+}
+
+/* ===========================
+      ANIMACIONES
+=========================== */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }

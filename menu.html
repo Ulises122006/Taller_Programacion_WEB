@@ -69,13 +69,13 @@
                 </ul>
 
                 <!-- Buscador -->
-                <form class="search-form">
-                    <input type="search" placeholder="Buscar..." />
-                    <button class="btn-search">
+                <form class="search-form" id="searchForm" aria-label="Buscar productos">
+                    <input type="search" id="searchInput" placeholder="Buscar productos..." />
+                    <button class="btn-search" type="submit">
                         <img src="img/buscar.png" alt="Buscar" class="icono-buscar" />
                     </button>
                 </form>
-
+                <div id="search-suggestions" class="search-suggestions"></div>
             </nav>
         </div>
 
@@ -86,103 +86,39 @@
             <h1 class="heading-1">Nuestro Menú</h1>
             <p>Explora nuestra selección de cafés, bebidas y postres</p>
         </section>
-        <!-- Contenedor general del contenido -->
+
         <div class="container">
 
+            <!-- ========== CAFÉS CALIENTES ========== -->
             <section class="product-category">
                 <h2 class="category-title" id="CafesCalientesMenu">Cafés Calientes</h2>
 
-                <div class="menu-products">
-
-                    <!-- Tarjeta individual del producto Café Americano -->
-                    <article class="card-product">
-                        <div class="container-img">
-                            <img src="img/cafe_americano.jpg" alt="Café Americano">
-                        </div>
-                        <div class="content-card-product">
-                            <h3>Café Americano</h3>
-                            <div class="add-cart">
-                                <img class="icono-carrito" src="img/carrito.png" alt="Agregar al Carrito">
-                            </div>
-                            <div class="price">S/5.00</div>
-                        </div>
-                    </article>
-
-                    <!-- Tarjeta individual del producto Capuchino Italiano -->
-                    <article class="card-product">
-                        <div class="container-img">
-                            <img src="img/capuchino.jpg" alt="Capuchino Italiano">
-                            <span class="discount">-10%</span>
-                        </div>
-                        <div class="content-card-product">
-                            <h3>Capuchino Italiano</h3>
-                            <div class="add-cart">
-                                <img class="icono-carrito" src="img/carrito.png" alt="Agregar al Carrito">
-                            </div>
-                            <div class="price">S/6.30 <span>S/7.00</span></div>
-                        </div>
-                    </article>
-
-                    <!-- Tarjeta individual del producto Mocaccino -->
-                    <article class="card-product">
-                        <div class="container-img">
-                            <img src="img/cafe_moca.jpg" alt="Mocaccino">
-                        </div>
-                        <div class="content-card-product">
-                            <h3>Mocaccino</h3>
-                            <div class="add-cart">
-                                <img class="icono-carrito" src="img/carrito.png" alt="Agregar al Carrito">
-                            </div>
-                            <div class="price">S/7.50</div>
-                        </div>
-                    </article>
+                <div class="menu-products" id="cat-cafes-calientes">
+                    <!-- JS insertará productos aquí -->
                 </div>
             </section>
 
-            <!-- Sección de productos: categoría Bebidas Frías -->
+            <!-- ========== BEBIDAS FRÍAS ========== -->
             <section class="product-category">
                 <h2 class="category-title" id="BebidasFriasMenu">Bebidas Frías</h2>
-                <div class="menu-products">
 
-                    <!-- Tarjeta individual del producto Frappuccino -->
-                    <article class="card-product">
-                        <div class="container-img">
-                            <img src="img/frappuccino.jpg" alt="Frappuccino">
-                        </div>
-                        <div class="content-card-product">
-                            <h3>Frappuccino Clásico</h3>
-                            <div class="add-cart">
-                                <img class="icono-carrito" src="img/carrito.png" alt="Agregar al Carrito">
-                            </div>
-                            <div class="price">S/8.00</div>
-                        </div>
-                    </article>
-
-                    <!-- Tarjeta individual del producto Té Helado -->
-                    <article class="card-product">
-                        <div class="container-img">
-                            <img src="img/te_helados_frios.jpg" alt="Té Helado de Frutos Rojos">
-                        </div>
-                        <div class="content-card-product">
-                            <h3>Té Helado de Frutos Rojos</h3>
-                            <div class="add-cart">
-                                <img class="icono-carrito" src="img/carrito.png" alt="Agregar al Carrito">
-                            </div>
-                            <div class="price">S/6.00</div>
-                        </div>
-                    </article>
-
+                <div class="menu-products" id="cat-bebidas-frias">
+                    <!-- JS insertará productos aquí -->
                 </div>
             </section>
-            <!-- Sección de productos: categoría Postres -->
+
+            <!-- ========== POSTRES ========== -->
             <section class="product-category">
                 <h2 class="category-title" id="PostresMenu">Postres</h2>
-                <div class="menu">
+
+                <div class="menu-products" id="cat-postres">
+                    <!-- JS insertará productos aquí -->
                 </div>
             </section>
 
         </div>
     </main>
+
     <!-- FOOTER: Información de contacto, enlaces y redes sociales -->
     <footer class="footer">
         <div class="footer-container">
@@ -215,7 +151,7 @@
                 <p>Recibe nuestras ofertas y novedades en tu correo.</p>
 
                 <!-- Formulario de suscripción -->
-                <form onsubmit="return false;">
+                <form id="form-boletin">
                     <input type="email" placeholder="Tu correo electrónico" required>
                     <button type="submit">Suscribirse</button>
                 </form>
@@ -235,6 +171,7 @@
             <p>&copy; 2025 Dulce Aroma ICA. Todos los derechos reservados.</p>
         </div>
     </footer>
+    <script type="module" src="js/main.js"></script>
 </body>
 
 </html>

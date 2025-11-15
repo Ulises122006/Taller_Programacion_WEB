@@ -63,7 +63,7 @@
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="menu.html">Menú</a></li>
                     <li><a href="detalles.html">Detalle del producto</a></li>
-                    <li><a href="carrito.html" class="active">Carrito</a></li>
+                    <li><a href="carrito.html">Carrito</a></li>
                     <li><a href="pagos.html">Pagar</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
@@ -81,66 +81,17 @@
     </header>
     <!-- MAIN: Contenido principal de la página -->
     <main class="main-content">
+        <section class="container">
+            <h1 class="heading-1">Resultados de búsqueda</h1>
+            <p id="busquedaTexto"></p>
 
-        <!-- Encabezado principal de la página del carrito -->
-        <section class="page-header">
-            <h1 class="heading-1">Carrito de Compras</h1>
-            <p>Revisa tus productos seleccionados antes de continuar</p>
+            <div class="container-products">
+                <div class="slider-track" id="resultadosBusqueda">
+                    <!-- JS insertará los productos encontrados -->
+                </div>
+            </div>
         </section>
-
-        <div class="container">
-
-            <!-- Sección principal del carrito (productos + resumen de compra) -->
-            <section class="cart-section">
-
-                <!-- Tabla que lista los productos añadidos al carrito -->
-                <div class="cart-items-container">
-                    <table class="cart-table">
-                        <thead>
-                            <tr>
-                                <th>Producto</th>
-                                <th>Precio</th>
-                                <th>Cantidad</th>
-                                <th>Total</th>
-                                <th></th> <!-- Columna vacía para el botón de eliminar -->
-                            </tr>
-                        </thead>
-
-                        <tbody>
-
-                        </tbody>
-                    </table>
-                </div>
-                <!-- Resumen del pedido con subtotal, envío y total final -->
-                <div class="cart-summary">
-                    <h2 class="contact-subtitle">Resumen de la Compra</h2>
-
-                    <!-- Subtotal de los productos -->
-                    <div class="summary-item">
-                        <span>Subtotal:</span>
-                        <span class="cart-subtotal">S/0.00</span>
-                    </div>
-
-                    <!-- Costo del envío -->
-                    <div class="summary-item">
-                        <span>Envío:</span>
-                        <span class="cart-envio">S/5.00</span>
-                    </div>
-
-                    <!-- Total final -->
-                    <div class="summary-item total-item">
-                        <span>Total:</span>
-                        <span class="cart-total">S/0.00</span>
-                    </div>
-
-                    <!-- Botones de acción -->
-                    <a href="pagos.html" class="btn-checkout">Proceder al Pago</a>
-                    <a href="menu.html" class="btn-continue-shopping">Seguir Comprando</a>
-                </div>
-            </section>
-        </div>
     </main>
-
     <!-- FOOTER: Información de contacto, enlaces y redes sociales -->
     <footer class="footer">
         <div class="footer-container">
@@ -161,7 +112,7 @@
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="menu.html">Menú</a></li>
                     <li><a href="detalles.html">Detalle del producto</a></li>
-                    <li><a href="carrito.html" class="active">Carrito</a></li>
+                    <li><a href="carrito.html">Carrito</a></li>
                     <li><a href="pagos.html">Pagar</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
@@ -173,7 +124,7 @@
                 <p>Recibe nuestras ofertas y novedades en tu correo.</p>
 
                 <!-- Formulario de suscripción -->
-                <form id="form-boletin">
+                <form onsubmit="return false;">
                     <input type="email" placeholder="Tu correo electrónico" required>
                     <button type="submit">Suscribirse</button>
                 </form>

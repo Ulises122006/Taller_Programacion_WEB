@@ -16,7 +16,6 @@
     <header>
         <div class="container-hero">
             <div class="container hero">
-
                 <!-- Soporte al cliente -->
                 <div class="soporte-cliente">
                     <img src="img/soporte_cliente.png" alt="Soporte" class="icono-soporte" />
@@ -25,15 +24,11 @@
                         <span class="number">+51 987 654 321</span>
                     </div>
                 </div>
-
                 <!-- Logo principal -->
                 <div class="container-logo">
                     <img src="img/cafeteria_icono.png" alt="Logo" class="icono-logo" />
-                    <h1 class="logo">
-                        <a href="index.html">Dulce Aroma Ica</a>
-                    </h1>
+                    <h1 class="logo"><a href="index.html">Dulce Aroma Ica</a></h1>
                 </div>
-
                 <!-- Usuario y carrito -->
                 <div class="contenedor-usuario">
                     <img src="img/usuario.png" alt="Usuario" class="icono-usuario" />
@@ -43,13 +38,13 @@
                         <span class="number">(0)</span>
                     </div>
                 </div>
+
             </div>
         </div>
-
         <!-- NAVBAR: Menú de navegación y buscador -->
+
         <div class="container-navbar">
             <nav class="navbar container">
-
                 <!-- Hamburguesa -->
                 <input type="checkbox" id="menu-toggle" class="menu-toggle">
                 <label for="menu-toggle" class="nav-toggle">
@@ -57,7 +52,6 @@
                     <span class="bar"></span>
                     <span class="bar"></span>
                 </label>
-
                 <!-- Menú de enlaces -->
                 <ul class="menu">
                     <li><a href="index.html">Inicio</a></li>
@@ -67,20 +61,20 @@
                     <li><a href="pagos.html" class="active">Pagar</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
-
                 <!-- Buscador -->
-                <form class="search-form">
-                    <input type="search" placeholder="Buscar..." />
-                    <button class="btn-search">
+                <form class="search-form" id="searchForm" aria-label="Buscar productos">
+                    <input type="search" id="searchInput" placeholder="Buscar productos..." />
+                    <button class="btn-search" type="submit">
                         <img src="img/buscar.png" alt="Buscar" class="icono-buscar" />
                     </button>
                 </form>
+                <div id="search-suggestions" class="search-suggestions"></div>
             </nav>
         </div>
     </header>
+
     <!-- MAIN: Contenido principal de la página -->
     <main class="main-content">
-
         <!-- Encabezado principal de la página de pago -->
         <section class="page-header">
             <h1 class="heading-1">Finalizar Compra</h1>
@@ -89,122 +83,122 @@
 
         <div class="container">
 
-            <!-- Sección principal del proceso de checkout (datos + resumen del pedido) -->
             <section class="checkout-section">
 
-                <!-- Columna izquierda: Formulario de facturación y métodos de pago -->
+                <!-- COLUMNA IZQUIERDA -->
                 <div class="billing-details">
                     <h2 class="contact-subtitle">Detalles de Facturación</h2>
+                    <!-- Formulario COMPLETO -->
+                    <form id="form-pago">
 
-                    <!-- Formulario con los datos del cliente -->
-                    <form>
-                        <!-- Fila con nombre y apellidos -->
                         <div class="form-row">
                             <div class="form-group half-width">
                                 <label for="firstname">Nombre</label>
-                                <input type="text" id="firstname" required>
+                                <input type="text" id="firstname">
                             </div>
                             <div class="form-group half-width">
                                 <label for="lastname">Apellidos</label>
-                                <input type="text" id="lastname" required>
+                                <input type="text" id="lastname">
                             </div>
                         </div>
 
-                        <!-- Dirección completa -->
                         <div class="form-group">
                             <label for="address">Dirección</label>
-                            <input type="text" id="address" placeholder="Calle, número y referencia" required>
+                            <input type="text" id="address">
                         </div>
 
-                        <!-- Teléfono de contacto -->
                         <div class="form-group">
                             <label for="phone">Teléfono</label>
-                            <input type="tel" id="phone" required>
+                            <input type="tel" id="phone">
                         </div>
 
-                        <!-- Correo electrónico -->
                         <div class="form-group">
                             <label for="email">Correo Electrónico</label>
-                            <input type="email" id="email" required>
+                            <input type="email" id="email">
                         </div>
+                        <!-- Métodos de pago -->
+                        <h2 class="contact-subtitle" style="margin-top: 2rem;">Método de Pago</h2>
 
-                        <!-- Métodos de pago disponibles -->
-                        <h2 class="contact-subtitle" style="margin-top: 3rem;">Método de Pago</h2>
                         <div class="payment-methods">
-                            <!-- Opción: Tarjeta -->
                             <div class="payment-option">
                                 <input type="radio" id="creditcard" name="payment" value="creditcard" checked>
                                 <label for="creditcard">Tarjeta de Crédito/Débito</label>
                             </div>
 
-                            <!-- Opción: Pago contra entrega -->
                             <div class="payment-option">
                                 <input type="radio" id="cod" name="payment" value="cod">
                                 <label for="cod">Pago Contra Entrega</label>
                             </div>
 
-                            <!-- Opción: Yape/Plin -->
                             <div class="payment-option">
                                 <input type="radio" id="yape" name="payment" value="yape">
                                 <label for="yape">Yape/Plin</label>
                             </div>
                         </div>
+
+                        <!-- CAMPOS TARJETA -->
+                        <div class="card-fields" style="display:none;">
+                            <div class="form-group">
+                                <label for="cardNumber">Número de Tarjeta</label>
+                                <input type="text" id="cardNumber" maxlength="19" placeholder="XXXX XXXX XXXX XXXX">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group half-width">
+                                    <label for="expiry">Vencimiento (MM/AA)</label>
+                                    <input type="text" id="expiry" maxlength="5" placeholder="MM/AA">
+                                </div>
+                                <div class="form-group half-width">
+                                    <label for="cvv">CVV</label>
+                                    <input type="password" id="cvv" maxlength="3" placeholder="123">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-place-order">Realizar Pedido</button>
+
                     </form>
                 </div>
 
-                <!-- Columna derecha: Resumen del pedido con precios -->
+                <!-- Columna derecha: resumen -->
                 <div class="order-summary">
                     <h2 class="contact-subtitle">Tu Pedido</h2>
 
-                    <!-- Lista de productos incluidos en el pedido -->
-                    <div class="summary-items">
-                        <div class="summary-product">
-                            <span>Capuchino Italiano (x2)</span>
-                            <span>S/12.60</span>
-                        </div>
-                        <div class="summary-product">
-                            <span>Frappuccino Clásico (x1)</span>
-                            <span>S/8.00</span>
-                        </div>
-                    </div>
+                    <div class="summary-items"></div>
 
-                    <!-- Subtotal y envío -->
                     <div class="summary-row">
                         <span>Subtotal</span>
-                        <span>S/20.60</span>
+                        <span class="checkout-subtotal">S/0.00</span>
                     </div>
+
                     <div class="summary-row">
                         <span>Envío</span>
-                        <span>S/5.00</span>
+                        <span class="checkout-envio">S/0.00</span>
                     </div>
 
-                    <!-- Total final a pagar -->
                     <div class="summary-row total-row">
                         <span>Total</span>
-                        <span>S/25.60</span>
+                        <span class="checkout-total">S/0.00</span>
                     </div>
 
-                    <!-- Botón final para confirmar el pedido -->
-                    <button type="submit" class="btn-place-order">Realizar Pedido</button>
                 </div>
-            </section>
-        </div>
-    </main>
 
+            </section>
+
+        </div> <!-- cierre container -->
+    </main>
 
     <!-- FOOTER: Información de contacto, enlaces y redes sociales -->
     <footer class="footer">
         <div class="footer-container">
-
             <!-- Sección: Información de contacto -->
             <div class="footer-contacto">
                 <h3>Contáctanos</h3>
                 <p>Ven y disfruta el mejor café y postres en Ica. ¡Te esperamos en Dulce Aroma!</p>
-                <p class="contacto-datos"><strong>Dirección:</strong> Calle Principal 123, Ica, Perú</p>
-                <p class="contacto-datos"><strong>Email:</strong> info@dulcearoma.com</p>
-                <p class="contacto-datos"><strong>Teléfono:</strong> +51 987 654 321</p>
+                <p><strong>Dirección:</strong> Calle Principal 123, Ica, Perú</p>
+                <p><strong>Email:</strong> info@dulcearoma.com</p>
+                <p><strong>Teléfono:</strong> +51 987 654 321</p>
             </div>
-
             <!-- Sección: Enlaces rápidos del sitio -->
             <div class="footer-enlaces">
                 <h3>Enlaces rápidos</h3>
@@ -217,18 +211,15 @@
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
             </div>
-
             <!-- Sección: Suscripción y redes sociales -->
             <div class="footer-boletin">
                 <h3>Boletín</h3>
                 <p>Recibe nuestras ofertas y novedades en tu correo.</p>
-
                 <!-- Formulario de suscripción -->
-                <form onsubmit="return false;">
+                <form id="form-boletin">
                     <input type="email" placeholder="Tu correo electrónico" required>
                     <button type="submit">Suscribirse</button>
                 </form>
-
                 <!-- Enlaces a redes sociales -->
                 <h3>Síguenos</h3>
                 <div class="footer-redes">
@@ -237,13 +228,15 @@
                     <a href="#"><img src="img/instagram.png" alt="Instagram" class="icono-red"> Instagram</a>
                 </div>
             </div>
-        </div>
 
+        </div>
         <!-- Sección: Derechos de autor -->
         <div class="footer-copy">
             <p>&copy; 2025 Dulce Aroma ICA. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <script type="module" src="js/main.js"></script>
 </body>
 
 </html>

@@ -69,13 +69,13 @@
                 </ul>
 
                 <!-- Buscador -->
-                <form class="search-form">
-                    <input type="search" placeholder="Buscar..." />
-                    <button class="btn-search">
+                <form class="search-form" id="searchForm" aria-label="Buscar productos">
+                    <input type="search" id="searchInput" placeholder="Buscar productos..." />
+                    <button class="btn-search" type="submit">
                         <img src="img/buscar.png" alt="Buscar" class="icono-buscar" />
                     </button>
                 </form>
-
+                <div id="search-suggestions" class="search-suggestions"></div>
             </nav>
         </div>
 
@@ -180,360 +180,12 @@
         <section class="container top-products">
             <h1 class="heading-1">Productos Destacados</h1>
 
-            <!-- Lista de productos -->
+            <!-- Lista de productos generados con JS -->
             <div class="container-products">
-
                 <div class="slider-track">
-
-                    <!-- Producto 1 -->
-                    <article class="card-product">
-                        <div class="container-img">
-                            <img src="img/IMAG-MENU/cafeamericano.jpg" alt="Café Americano">
-                            <span class="discount">-10%</span>
-
-                            <!-- Botones de acción -->
-                            <div class="button-group">
-                                <button type="button" class="icon-button">
-                                    <img src="img/ver.png" alt="Ver producto">
-                                </button>
-                                <button type="button" class="icon-button">
-                                    <img src="img/favorito.png" alt="Agregar a favoritos">
-                                </button>
-                            </div>
-                        </div>
-                        <div class="content-card-product">
-                            <h3>Café Americano</h3>
-                            <div class="add-cart">
-                                <img class="icono-carrito" src="img/carrito.png" alt="Carrito">
-                            </div>
-                            <div class="price">S/4.30 <span>S/5.00</span></div>
-                        </div>
-                    </article>
-
-                    <!-- Producto 2 -->
-                    <article class="card-product">
-                        <div class="container-img">
-                            <span class="discount">-20%</span>
-                            <img src="img/IMAG-MENU/frappe.jpg" alt="Frappe de Chocolate">
-                            <!-- Botones de acción -->
-                            <div class="button-group">
-                                <button type="button" class="icon-button">
-                                    <img src="img/ver.png" alt="Ver producto">
-                                </button>
-                                <button type="button" class="icon-button">
-                                    <img src="img/favorito.png" alt="Agregar a favoritos">
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="content-card-product">
-                            <h3>Frappe de Chocolate</h3>
-                            <div class="add-cart">
-                                <img class="icono-carrito" src="img/carrito.png" alt="Carrito">
-                            </div>
-                            <div class="price">S/6.00 <span>S/7.50</span></div>
-                        </div>
-                    </article>
-
-                    <!-- Producto 3 -->
-                    <article class="card-product">
-                        <div class="container-img">
-                            <span class="discount">-13%</span>
-                            <img src="img/IMAG-MENU/tartamanzana.jpg" alt="Tarta de Manzana">
-                            <!-- Botones de acción -->
-                            <div class="button-group">
-                                <button type="button" class="icon-button">
-                                    <img src="img/ver.png" alt="Ver producto">
-                                </button>
-                                <button type="button" class="icon-button">
-                                    <img src="img/favorito.png" alt="Agregar a favoritos">
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="content-card-product">
-                            <h3>Tarta de Manzana</h3>
-                            <div class="add-cart">
-                                <img class="icono-carrito" src="img/carrito.png" alt="Carrito">
-                            </div>
-                            <div class="price">S/6.50 <span>S/7.50</span></div>
-                        </div>
-                    </article>
-
-                    <!-- Producto 4 -->
-                    <article class="card-product">
-                        <div class="container-img">
-                            <img src="img/IMAG-MENU/expressodoble.jpg" alt="Expresso Doble">
-                            <!-- Botones de acción -->
-                            <div class="button-group">
-                                <button type="button" class="icon-button">
-                                    <img src="img/ver.png" alt="Ver producto">
-                                </button>
-                                <button type="button" class="icon-button">
-                                    <img src="img/favorito.png" alt="Agregar a favoritos">
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="content-card-product">
-                            <h3>Expresso Doble</h3>
-                            <div class="add-cart">
-                                <img class="icono-carrito" src="img/carrito.png" alt="Carrito">
-                            </div>
-                            <div class="price">S/4.50</div>
-                        </div>
-                    </article>
-
-                    <!-- Producto 5 -->
-                    <article class="card-product">
-                        <div class="container-img">
-                            <span class="discount">-12.5%</span>
-                            <img src="img/IMAG-MENU/frappuccino.jpg" alt="Frappuccino">
-                            <!-- Botones de acción -->
-                            <div class="button-group">
-                                <button type="button" class="icon-button">
-                                    <img src="img/ver.png" alt="Ver producto">
-                                </button>
-                                <button type="button" class="icon-button">
-                                    <img src="img/favorito.png" alt="Agregar a favoritos">
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="content-card-product">
-                            <h3>Frappuccino Clásico</h3>
-                            <div class="add-cart">
-                                <img class="icono-carrito" src="img/carrito.png" alt="Carrito">
-                            </div>
-                            <div class="price">S/7.00 <span>S/8.00</span></div>
-                        </div>
-                    </article>
-
-                    <!-- Producto 6 -->
-                    <article class="card-product">
-                        <div class="container-img">
-                            <span class="discount">-8%</span>
-                            <img src="img/IMAG-MENU/piedelimon.jpg" alt="Pie de Limón">
-                            <!-- Botones de acción -->
-                            <div class="button-group">
-                                <button type="button" class="icon-button">
-                                    <img src="img/ver.png" alt="Ver producto">
-                                </button>
-                                <button type="button" class="icon-button">
-                                    <img src="img/favorito.png" alt="Agregar a favoritos">
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="content-card-product">
-                            <h3>Pie de Limón</h3>
-                            <div class="add-cart">
-                                <img class="icono-carrito" src="img/carrito.png" alt="Carrito">
-                            </div>
-                            <div class="price">S/6.00 <span>S/6.50</span></div>
-                        </div>
-                    </article>
-
-                    <!-- Producto 7 -->
-                    <article class="card-product">
-                        <div class="container-img">
-                            <span class="discount">-14%</span>
-                            <img src="img/IMAG-MENU/mocaccino.jpg" alt="Mocaccino">
-                            <!-- Botones de acción -->
-                            <div class="button-group">
-                                <button type="button" class="icon-button">
-                                    <img src="img/ver.png" alt="Ver producto">
-                                </button>
-                                <button type="button" class="icon-button">
-                                    <img src="img/favorito.png" alt="Agregar a favoritos">
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="content-card-product">
-                            <h3>Mocacciono</h3>
-                            <div class="add-cart">
-                                <img class="icono-carrito" src="img/carrito.png" alt="Carrito">
-                            </div>
-                            <div class="price">S/6.00 <span>S/7.00</span></div>
-                        </div>
-                    </article>
-
-
-                    <!-- Producto 1 -->
-                    <article class="card-product">
-                        <div class="container-img">
-                            <img src="img/IMAG-MENU/cafeamericano.jpg" alt="Café Americano">
-                            <span class="discount">-10%</span>
-
-                            <!-- Botones de acción -->
-                            <div class="button-group">
-                                <button type="button" class="icon-button">
-                                    <img src="img/ver.png" alt="Ver producto">
-                                </button>
-                                <button type="button" class="icon-button">
-                                    <img src="img/favorito.png" alt="Agregar a favoritos">
-                                </button>
-                            </div>
-                        </div>
-                        <div class="content-card-product">
-                            <h3>Café Americano</h3>
-                            <div class="add-cart">
-                                <img class="icono-carrito" src="img/carrito.png" alt="Carrito">
-                            </div>
-                            <div class="price">S/4.30 <span>S/5.00</span></div>
-                        </div>
-                    </article>
-
-                    <!-- Producto 2 -->
-                    <article class="card-product">
-                        <div class="container-img">
-                            <span class="discount">-20%</span>
-                            <img src="img/IMAG-MENU/frappe.jpg" alt="Frappe de Chocolate">
-                            <!-- Botones de acción -->
-                            <div class="button-group">
-                                <button type="button" class="icon-button">
-                                    <img src="img/ver.png" alt="Ver producto">
-                                </button>
-                                <button type="button" class="icon-button">
-                                    <img src="img/favorito.png" alt="Agregar a favoritos">
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="content-card-product">
-                            <h3>Frappe de Chocolate</h3>
-                            <div class="add-cart">
-                                <img class="icono-carrito" src="img/carrito.png" alt="Carrito">
-                            </div>
-                            <div class="price">S/6.00 <span>S/7.50</span></div>
-                        </div>
-                    </article>
-
-                    <!-- Producto 3 -->
-                    <article class="card-product">
-                        <div class="container-img">
-                            <span class="discount">-13%</span>
-                            <img src="img/IMAG-MENU/tartamanzana.jpg" alt="Tarta de Manzana">
-                            <!-- Botones de acción -->
-                            <div class="button-group">
-                                <button type="button" class="icon-button">
-                                    <img src="img/ver.png" alt="Ver producto">
-                                </button>
-                                <button type="button" class="icon-button">
-                                    <img src="img/favorito.png" alt="Agregar a favoritos">
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="content-card-product">
-                            <h3>Tarta de Manzana</h3>
-                            <div class="add-cart">
-                                <img class="icono-carrito" src="img/carrito.png" alt="Carrito">
-                            </div>
-                            <div class="price">S/6.50 <span>S/7.50</span></div>
-                        </div>
-                    </article>
-
-                    <!-- Producto 4 -->
-                    <article class="card-product">
-                        <div class="container-img">
-                            <img src="img/IMAG-MENU/expressodoble.jpg" alt="Expresso Doble">
-                            <!-- Botones de acción -->
-                            <div class="button-group">
-                                <button type="button" class="icon-button">
-                                    <img src="img/ver.png" alt="Ver producto">
-                                </button>
-                                <button type="button" class="icon-button">
-                                    <img src="img/favorito.png" alt="Agregar a favoritos">
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="content-card-product">
-                            <h3>Expresso Doble</h3>
-                            <div class="add-cart">
-                                <img class="icono-carrito" src="img/carrito.png" alt="Carrito">
-                            </div>
-                            <div class="price">S/4.50</div>
-                        </div>
-                    </article>
-
-                    <!-- Producto 5 -->
-                    <article class="card-product">
-                        <div class="container-img">
-                            <span class="discount">-12.5%</span>
-                            <img src="img/IMAG-MENU/frappuccino.jpg" alt="Frappuccino">
-                            <!-- Botones de acción -->
-                            <div class="button-group">
-                                <button type="button" class="icon-button">
-                                    <img src="img/ver.png" alt="Ver producto">
-                                </button>
-                                <button type="button" class="icon-button">
-                                    <img src="img/favorito.png" alt="Agregar a favoritos">
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="content-card-product">
-                            <h3>Frappuccino Clásico</h3>
-                            <div class="add-cart">
-                                <img class="icono-carrito" src="img/carrito.png" alt="Carrito">
-                            </div>
-                            <div class="price">S/7.00 <span>S/8.00</span></div>
-                        </div>
-                    </article>
-
-                    <!-- Producto 6 -->
-                    <article class="card-product">
-                        <div class="container-img">
-                            <span class="discount">-8%</span>
-                            <img src="img/IMAG-MENU/piedelimon.jpg" alt="Pie de Limón">
-                            <!-- Botones de acción -->
-                            <div class="button-group">
-                                <button type="button" class="icon-button">
-                                    <img src="img/ver.png" alt="Ver producto">
-                                </button>
-                                <button type="button" class="icon-button">
-                                    <img src="img/favorito.png" alt="Agregar a favoritos">
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="content-card-product">
-                            <h3>Pie de Limón</h3>
-                            <div class="add-cart">
-                                <img class="icono-carrito" src="img/carrito.png" alt="Carrito">
-                            </div>
-                            <div class="price">S/6.00 <span>S/6.50</span></div>
-                        </div>
-                    </article>
-
-                    <!-- Producto 7 -->
-                    <article class="card-product">
-                        <div class="container-img">
-                            <span class="discount">-14%</span>
-                            <img src="img/IMAG-MENU/mocaccino.jpg" alt="Mocaccino">
-                            <!-- Botones de acción -->
-                            <div class="button-group">
-                                <button type="button" class="icon-button">
-                                    <img src="img/ver.png" alt="Ver producto">
-                                </button>
-                                <button type="button" class="icon-button">
-                                    <img src="img/favorito.png" alt="Agregar a favoritos">
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="content-card-product">
-                            <h3>Mocacciono</h3>
-                            <div class="add-cart">
-                                <img class="icono-carrito" src="img/carrito.png" alt="Carrito">
-                            </div>
-                            <div class="price">S/6.00 <span>S/7.00</span></div>
-                        </div>
-                    </article>
+                    <!-- AQUÍ JS INSERTARÁ LOS PRODUCTOS -->
                 </div>
+            </div>
         </section>
         <!-- Galería de imágenes -->
         <section class="gallery">
@@ -544,6 +196,7 @@
             <img src="img/galeria5.jpg" alt="Gallery Img5" class="gallery-img-5" />
         </section>
     </main>
+
     <!-- FOOTER: Información de contacto, enlaces y redes sociales -->
     <footer class="footer">
         <div class="footer-container">
@@ -576,11 +229,10 @@
                 <p>Recibe nuestras ofertas y novedades en tu correo.</p>
 
                 <!-- Formulario de suscripción -->
-                <form onsubmit="return false;">
+                <form id="form-boletin">
                     <input type="email" placeholder="Tu correo electrónico" required>
                     <button type="submit">Suscribirse</button>
                 </form>
-
                 <!-- Enlaces a redes sociales -->
                 <h3>Síguenos</h3>
                 <div class="footer-redes">
@@ -596,6 +248,7 @@
             <p>&copy; 2025 Dulce Aroma ICA. Todos los derechos reservados.</p>
         </div>
     </footer>
+    <script type="module" src="js/main.js"></script>
 </body>
 
 </html>

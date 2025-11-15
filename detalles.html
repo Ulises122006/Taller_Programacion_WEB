@@ -68,12 +68,13 @@
                 </ul>
 
                 <!-- Buscador -->
-                <form class="search-form">
-                    <input type="search" placeholder="Buscar..." />
-                    <button class="btn-search">
+                <form class="search-form" id="searchForm" aria-label="Buscar productos">
+                    <input type="search" id="searchInput" placeholder="Buscar productos..." />
+                    <button class="btn-search" type="submit">
                         <img src="img/buscar.png" alt="Buscar" class="icono-buscar" />
                     </button>
                 </form>
+                <div id="search-suggestions" class="search-suggestions"></div>
 
             </nav>
         </div>
@@ -89,108 +90,18 @@
         </section>
 
         <div class="container">
-
-            <!-- Sección principal del producto: imágenes, descripción, precio y botón de compra -->
-            <section class="product-detail-section">
-
-                <!-- Galería del producto (imagen principal + miniaturas) -->
-                <div class="product-gallery">
-                    <div class="main-image">
-                        <img src="img/capuchino.jpg" alt="Capuchino Italiano - Vista Principal" id="mainProductImage">
-                    </div>
-                    <div class="thumbnail-images">
-                        <img src="img/capuchino.jpg" alt="Miniatura 1" class="thumbnail">
-                        <img src="img/capuchino.jpg" alt="Miniatura 2" class="thumbnail">
-                        <img src="img/capuchino.jpg" alt="Miniatura 3" class="thumbnail">
-                        <img src="img/capuchino.jpg" alt="Miniatura 4" class="thumbnail">
-                    </div>
-                </div>
-
-                <!-- Contenido descriptivo del producto (nombre, precio, descripción, cantidad, etc.) -->
-                <div class="product-details-content">
-                    <h2 class="product-title">Capuchino Italiano</h2>
-
-                    <!-- Precio actual y anterior -->
-                    <div class="product-price">S/6.30 <span>S/7.00</span></div>
-
-                    <!-- Descripción del producto -->
-                    <p class="product-description">
-                        Disfruta de la perfección en una taza con nuestro Capuchino Italiano. Elaborado con un espresso
-                        de tueste oscuro, leche vaporizada cremosa y una capa de espuma aterciopelada. Cada sorbo es una
-                        experiencia rica y equilibrada, ideal para empezar tu día o para una pausa reconfortante.
-                    </p>
-
-                    <!-- Selector de cantidad con botones + y - -->
-                    <div class="quantity-selector">
-                        <label for="quantity">Cantidad:</label>
-                        <button type="button" class="quantity-btn minus-btn">-</button>
-                        <input type="number" id="quantity" name="quantity" value="1" min="1">
-                        <button type="button" class="quantity-btn plus-btn">+</button>
-                    </div>
-
-                    <!-- Botón para añadir el producto al carrito -->
-                    <button type="button" class="btn-add-to-cart">Añadir al Carrito</button>
-
-                    <!-- Información adicional del producto -->
-                    <div class="product-meta">
-                        <p><strong>Categoría:</strong> Cafés Calientes</p>
-                    </div>
-                </div>
+            <section class="product-detail-section" id="detalle-producto">
+                <!-- JS insertará aquí el producto dinámico -->
             </section>
-
-            <!-- Sección de productos relacionados (nueva versión) -->
-            <section class="related-items">
-                <h2 class="related-title">También te podría gustar</h2>
-
-                <div class="related-grid">
-
-                    <!-- Producto 1 -->
-                    <article class="item-card">
-                        <div class="item-img">
-                            <img src="img/cafe_americano.jpg" alt="Café Americano">
-                        </div>
-                        <div class="item-content">
-                            <h3>Café Americano</h3>
-                            <div class="item-bottom">
-                                <div class="add-btn"><img src="img/carrito.png" alt="Agregar al Carrito"></div>
-                                <div class="item-price">S/5.00</div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Producto 2 -->
-                    <article class="item-card">
-                        <div class="item-img">
-                            <img src="img/cafe_moca.jpg" alt="Mocaccino">
-                        </div>
-                        <div class="item-content">
-                            <h3>Mocaccino</h3>
-                            <div class="item-bottom">
-                                <div class="add-btn"><img src="img/carrito.png" alt="Agregar al Carrito"></div>
-                                <div class="item-price">S/7.50</div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Producto 3 -->
-                    <article class="item-card">
-                        <div class="item-img">
-                            <img src="img/frappuccino.jpg" alt="Frappuccino">
-                        </div>
-                        <div class="item-content">
-                            <h3>Frappuccino Clásico</h3>
-                            <div class="item-bottom">
-                                <div class="add-btn"><img src="img/carrito.png" alt="Agregar al Carrito"></div>
-                                <div class="item-price">S/8.00</div>
-                            </div>
-                        </div>
-                    </article>
-
-                </div>
-            </section>
-
-
         </div>
+        <section class="related-items">
+            <h2 class="related-title">También te podría gustar</h2>
+            <div class="related-grid" id="relacionados">
+                <!-- Productos sugeridos aparecerán aquí -->
+            </div>
+        </section>
+
+
     </main>
 
 
@@ -226,7 +137,7 @@
                 <p>Recibe nuestras ofertas y novedades en tu correo.</p>
 
                 <!-- Formulario de suscripción -->
-                <form onsubmit="return false;">
+                <form id="form-boletin">
                     <input type="email" placeholder="Tu correo electrónico" required>
                     <button type="submit">Suscribirse</button>
                 </form>
@@ -246,6 +157,7 @@
             <p>&copy; 2025 Dulce Aroma ICA. Todos los derechos reservados.</p>
         </div>
     </footer>
+    <script type="module" src="js/main.js"></script>
 </body>
 
 </html>

@@ -11,7 +11,21 @@ export function iniciarResultadosBusqueda() {
 
     if (!cont) return;
 
-    const termino = (localStorage.getItem("ultimaBusqueda") || "").toLowerCase();
+    // Si el contenedor está usando las clases del carrusel, desactivarlas
+    // aquí para que en la página de búsqueda los resultados no se desplacen.
+    if (cont.classList.contains('slider-track')) {
+        cont.classList.remove('slider-track');
+        cont.classList.add('search-results');
+        // asegurar que no quede animación aplicada por inline styles
+        cont.style.animation = 'none';
+        cont.style.gap = '2rem';
+        cont.style.alignItems = 'flex-start';
+    }
+
+    // Leer término prioritariamente desde query param 'q', si no existe usar localStorage
+    const params = new URLSearchParams(window.location.search);
+    const qParam = params.get('q');
+    const termino = ( (qParam) ? qParam : (localStorage.getItem("ultimaBusqueda") || "") ).toLowerCase();
 
     if (textoElem) {
         textoElem.textContent = termino
@@ -55,7 +69,7 @@ export function iniciarResultadosBusqueda() {
             <div class="content-card-product">
                 <h3>${prod.nombre}</h3>
 
-                <div class="add-cart">
+                <div class="add-cart" role="button" tabindex="0" data-id="${prod.id}">
                     <img src="img/carrito.png" alt="Carrito">
                 </div>
 
@@ -69,6 +83,22 @@ export function iniciarResultadosBusqueda() {
         card.querySelector("h3").addEventListener("click", () => {
             window.location.href = `detalles.html?id=${prod.id}`;
         });
+
+        // Click en el icono de carrito también lleva al detalle (o puede añadir al carrito)
+        const addBtn = card.querySelector('.add-cart');
+        if (addBtn) {
+            addBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                window.location.href = `detalles.html?id=${prod.id}`;
+            });
+            // permitir activar con Enter
+            addBtn.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    window.location.href = `detalles.html?id=${prod.id}`;
+                }
+            });
+        }
 
         cont.appendChild(card);
     });

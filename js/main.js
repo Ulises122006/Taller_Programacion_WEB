@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
       validarFormularios();
       break;
 
-    case pagina.endsWith("buscar.html"):
+    case "buscar.html":
       iniciarResultadosBusqueda();
       break;
   }

@@ -3,24 +3,78 @@ import { PRODUCTOS } from "./catalogo.js";
 
 /**
  * Activa el buscador del navbar en todas las páginas
+ * - Maneja submit (redirige a buscar.html y guarda la búsqueda)
+ * - Muestra sugerencias mientras se escribe (usando PRODUCTOS)
+ * - Prefill del input si estamos en buscar.html
  */
 export function iniciarBuscador() {
     const form = document.querySelector("#searchForm");
     const input = document.querySelector("#searchInput");
+    const suggestions = document.querySelector("#search-suggestions");
 
     if (!form || !input) return;
 
+    // Prefill: si la URL contiene ?q=..., ponerlo en el input
+    try {
+        const params = new URLSearchParams(window.location.search);
+        const qParam = params.get('q');
+        if (qParam) input.value = qParam;
+    } catch (err) {
+        // ignorar si URLSearchParams no está disponible
+    }
+
+    // Enviar formulario: guardar término y redirigir
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
         const texto = input.value.trim();
-
         if (texto.length === 0) return;
 
-        // Guardar búsqueda para usarla en buscar.html
-        localStorage.setItem("ultimaBusqueda", texto);
+        // Redirigir con query param (más robusto y compartible)
+        const url = `buscar.html?q=${encodeURIComponent(texto)}`;
+        // Guardar también en localStorage como fallback
+        try { localStorage.setItem("ultimaBusqueda", texto); } catch (e) {}
+        window.location.href = url;
+    });
 
-        // Redirigir a página de resultados
-        window.location.href = "buscar.html";
+    // Sugerencias en tiempo real
+    if (!suggestions) return; // si no hay contenedor, no intentamos sugerencias
+
+    const productosArray = Object.values(PRODUCTOS || {});
+
+    input.addEventListener("input", () => {
+        const q = input.value.trim().toLowerCase();
+        suggestions.innerHTML = "";
+
+        if (q.length < 2) return; // mostrar sugerencias desde 2 caracteres
+
+        const matches = productosArray.filter(p =>
+            p.nombre.toLowerCase().includes(q) ||
+            (p.categoria || "").toLowerCase().includes(q)
+        ).slice(0, 6);
+
+        if (matches.length === 0) return;
+
+        const list = document.createElement('ul');
+        list.className = 'suggestions-list';
+
+        matches.forEach(m => {
+            const item = document.createElement('li');
+            item.className = 'suggestion-item';
+            item.textContent = m.nombre;
+            item.addEventListener('click', () => {
+                const url = `buscar.html?q=${encodeURIComponent(m.nombre)}`;
+                try { localStorage.setItem('ultimaBusqueda', m.nombre); } catch (e) {}
+                window.location.href = url;
+            });
+            list.appendChild(item);
+        });
+
+        suggestions.appendChild(list);
+    });
+
+    // Cerrar sugerencias al perder foco (con retraso para permitir click)
+    input.addEventListener('blur', () => {
+        setTimeout(() => { suggestions.innerHTML = ''; }, 150);
     });
 }

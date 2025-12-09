@@ -15,7 +15,7 @@ import { iniciarPagos } from './modulos/pagos.js';
 import { iniciarDetalleProducto } from './modulos/detalleProducto.js';
 import { validarFormularios } from './modulos/validacionFormularios.js';
 
-// OPCIONALES
+// PRODUCTOS 
 import { cargarProductosDestacados } from "./modulos/productosDestacados.js";
 
 document.addEventListener('DOMContentLoaded', () => {

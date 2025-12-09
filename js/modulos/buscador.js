@@ -15,13 +15,9 @@ export function iniciarBuscador() {
     if (!form || !input) return;
 
     // Prefill: si la URL contiene ?q=..., ponerlo en el input
-    try {
-        const params = new URLSearchParams(window.location.search);
-        const qParam = params.get('q');
-        if (qParam) input.value = qParam;
-    } catch (err) {
-        // ignorar si URLSearchParams no está disponible
-    }
+    const params = new URLSearchParams(window.location.search);
+    const qParam = params.get('q');
+    if (qParam) input.value = decodeURIComponent(qParam);
 
     // Enviar formulario: guardar término y redirigir
     form.addEventListener("submit", (e) => {
@@ -32,8 +28,6 @@ export function iniciarBuscador() {
 
         // Redirigir con query param (más robusto y compartible)
         const url = `buscar.html?q=${encodeURIComponent(texto)}`;
-        // Guardar también en localStorage como fallback
-        try { localStorage.setItem("ultimaBusqueda", texto); } catch (e) {}
         window.location.href = url;
     });
 
@@ -57,14 +51,16 @@ export function iniciarBuscador() {
 
         const list = document.createElement('ul');
         list.className = 'suggestions-list';
+        list.setAttribute('role', 'listbox');
 
         matches.forEach(m => {
             const item = document.createElement('li');
             item.className = 'suggestion-item';
+            item.setAttribute('role', 'option');
             item.textContent = m.nombre;
+            item.style.cursor = 'pointer';
             item.addEventListener('click', () => {
                 const url = `buscar.html?q=${encodeURIComponent(m.nombre)}`;
-                try { localStorage.setItem('ultimaBusqueda', m.nombre); } catch (e) {}
                 window.location.href = url;
             });
             list.appendChild(item);

@@ -22,35 +22,37 @@ export function iniciarResultadosBusqueda() {
         cont.style.alignItems = 'flex-start';
     }
 
-    // Leer término prioritariamente desde query param 'q', si no existe usar localStorage
+    // Leer término desde query param 'q'
     const params = new URLSearchParams(window.location.search);
-    const qParam = params.get('q');
-    const termino = ( (qParam) ? qParam : (localStorage.getItem("ultimaBusqueda") || "") ).toLowerCase();
+    const qParam = params.get('q') || "";
+    const termino = decodeURIComponent(qParam).toLowerCase();
 
-    if (textoElem) {
-        textoElem.textContent = termino
-            ? `Resultados para: "${termino}"`
-            : "Escribe algo en el buscador para ver resultados.";
-    }
-
-    // Convertir catálogo en array
-    const catalogo = Object.values(PRODUCTOS);
-
-    // Filtro principal
-    const resultados = catalogo.filter(p =>
-        p.nombre.toLowerCase().includes(termino) ||
-        p.categoria.toLowerCase().includes(termino)
-    );
-
-    // Si no hay texto
+    // Si no hay texto, mostrar mensaje
     if (termino.length === 0) {
-        cont.innerHTML = `<p style="padding:20px;">Ingresa un término de búsqueda.</p>`;
+        if (textoElem) {
+            textoElem.textContent = "Escribe un término para buscar";
+        }
+        cont.innerHTML = `<div class="search-empty-state"><p>¿Qué te gustaría encontrar? Usa el buscador para descubrir nuestros productos.</p></div>`;
         return;
     }
 
+    // Mostrar qué se está buscando
+    if (textoElem) {
+        textoElem.textContent = `Búsqueda: "${termino}"`;
+    }
+
+    // Convertir catálogo en array y filtrar
+    const catalogo = Object.values(PRODUCTOS);
+    const resultados = catalogo.filter(p => {
+        const nombre = p.nombre.toLowerCase();
+        const categoria = (p.categoria || "").toLowerCase();
+        const descripcion = (p.descripcion || "").toLowerCase();
+        return nombre.includes(termino) || categoria.includes(termino) || descripcion.includes(termino);
+    });
+
     // No hubo coincidencias
     if (resultados.length === 0) {
-        cont.innerHTML = `<p style="padding:20px;">No se encontraron resultados.</p>`;
+        cont.innerHTML = `<div class="search-empty-state"><svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg><h3>No encontramos lo que buscas</h3><p>Intenta con otras palabras clave o explora nuestro <a href="menu.html">menú completo</a></p></div>`;
         return;
     }
 
@@ -79,12 +81,11 @@ export function iniciarResultadosBusqueda() {
             </div>
         `;
 
-        // Click al título → ir a detalles
+        // Click al título, ir a detalles
         card.querySelector("h3").addEventListener("click", () => {
             window.location.href = `detalles.html?id=${prod.id}`;
         });
 
-        // Click en el icono de carrito también lleva al detalle (o puede añadir al carrito)
         const addBtn = card.querySelector('.add-cart');
         if (addBtn) {
             addBtn.addEventListener('click', (e) => {

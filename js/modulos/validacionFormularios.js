@@ -1,7 +1,7 @@
 import { paginaActual } from './utilidades.js';
 
 /* ============================
-      MODAL ELEGANTE CONTACTO
+      MODAL CONTACTO
 ============================ */
 function mostrarModalContacto() {
     const modal = document.createElement("div");

@@ -2029,3 +2029,64 @@ CAMPOS DE TARJETA OPCIONALES
     from { transform: translateY(40px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
+
+/* ===========================
+   ESTADO VACÍO DE BÚSQUEDA
+=========================== */
+.search-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(199, 161, 122, 0.05) 0%, rgba(245, 245, 245, 0.5) 100%);
+    border-radius: 1.2rem;
+    margin: 2rem auto;
+    max-width: 60rem;
+    width: 100%;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+#resultadosBusqueda:has(.search-empty-state) {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.search-empty-state .search-icon {
+    width: 6rem;
+    height: 6rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    opacity: 0.7;
+}
+
+.search-empty-state h3 {
+    font-size: 2rem;
+    color: var(--dark-color);
+    margin: 1rem 0 0.8rem 0;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.search-empty-state p {
+    font-size: 1.4rem;
+    color: #666;
+    margin: 0.5rem 0;
+    line-height: 1.6;
+    max-width: 50rem;
+}
+
+.search-empty-state a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.search-empty-state a:hover {
+    border-bottom-color: var(--primary-color);
+    color: #8b6f47;
+}

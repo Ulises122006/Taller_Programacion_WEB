@@ -1,10 +1,12 @@
 /**
  * Página de pago (pagos.html):
  * - Resumen del carrito
- * - Formateo automático de tarjeta y fecha
- * - Validación real (tarjeta, fecha, cvv, email)
- * - Modal final
+ * - Integración Culqi Checkout v4
+ * - Validación de datos de facturación
+ * - Tokenización de tarjetas
  */
+
+import { inicializarCulqi, abrirCulqi } from "./culqi.js";
 
 const STORAGE_KEY = "carritoDulceAroma";
 
@@ -105,49 +107,10 @@ export function iniciarPagos() {
     subtotalElem.textContent = `S/${subtotal.toFixed(2)}`;
     envioElem.textContent = `S/${envio.toFixed(2)}`;
     totalElem.textContent = `S/${total.toFixed(2)}`;
+
     /* ======================================
-       MOSTRAR / OCULTAR CAMPOS DE TARJETA
+       SUBMIT: VALIDACIÓN Y CULQI
     ====================================== */
-    const radios = document.querySelectorAll("input[name='payment']");
-    const cardFields = document.querySelector(".card-fields");
-
-    radios.forEach(r => {
-        r.addEventListener("change", () => {
-            if (r.value === "creditcard") {
-                cardFields.style.display = "block";
-            } else {
-                cardFields.style.display = "none";
-            }
-        });
-    });
-
-    /* -------------------------------------
-            FORMATEO DE TARJETA
-    ------------------------------------- */
-    const cardInput = document.querySelector("#cardNumber");
-    cardInput.addEventListener("input", (e) => {
-        let valor = e.target.value.replace(/\D/g, "");
-        valor = valor.substring(0, 16);
-        valor = valor.replace(/(.{4})/g, "$1 ").trim();
-        e.target.value = valor;
-    });
-
-    /* -------------------------------------
-            FORMATEO DE FECHA MM/AA
-    ------------------------------------- */
-    const expiryInput = document.querySelector("#expiry");
-    expiryInput.addEventListener("input", (e) => {
-        let v = e.target.value.replace(/\D/g, "");
-        if (v.length >= 3) {
-            v = v.substring(0, 4);
-            v = v.replace(/(\d{2})(\d{1,2})/, "$1/$2");
-        }
-        e.target.value = v;
-    });
-
-    /* -------------------------------------
-            SUBMIT: VALIDACIÓN COMPLETA
-    ------------------------------------- */
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
@@ -156,62 +119,41 @@ export function iniciarPagos() {
         const direccion = document.querySelector("#address").value.trim();
         const telefono = document.querySelector("#phone").value.trim();
         const email = document.querySelector("#email").value.trim();
-        const metodo = document.querySelector("input[name='payment']:checked").value;
 
-        // Campos obligatorios
+        // Validación de campos obligatorios
         if (!nombre || !apellidos || !direccion || !telefono || !email) {
-            mostrarToast("❌ Todos los campos son obligatorios.");
+            mostrarToast(" Todos los campos son obligatorios.");
             return;
         }
 
-        // Email válido
+        // Validación de email
         const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!regexEmail.test(email)) {
-            mostrarToast("❌ Correo inválido.");
+            mostrarToast(" Correo inválido.");
             return;
         }
 
-        // Validación tarjeta si corresponde
-        if (metodo === "creditcard") {
-            const card = cardInput.value.replace(/\s/g, "");
-            const exp = expiryInput.value.trim();
-            const cvv = document.querySelector("#cvv").value.trim();
-
-            if (card.length !== 16) {
-                mostrarToast("❌ La tarjeta debe tener 16 dígitos.");
-                return;
-            }
-
-            // fecha MM/AA
-            if (!/^\d{2}\/\d{2}$/.test(exp)) {
-                mostrarToast("❌ Formato de fecha inválido (MM/AA).");
-                return;
-            }
-
-            const [MM, AA] = exp.split("/").map(Number);
-
-            if (MM < 1 || MM > 12) {
-                mostrarToast("❌ Mes inválido (01-12).");
-                return;
-            }
-
-            const hoy = new Date();
-            const añoActual = Number(String(hoy.getFullYear()).slice(-2));
-            const mesActual = hoy.getMonth() + 1;
-
-            if (AA < añoActual || (AA === añoActual && MM < mesActual)) {
-                mostrarToast("❌ La tarjeta está vencida.");
-                return;
-            }
-
-            if (cvv.length !== 3) {
-                mostrarToast("❌ CVV inválido.");
-                return;
-            }
+        // Validación de teléfono (al menos 7 dígitos)
+        const soloNumeros = telefono.replace(/\D/g, "");
+        if (soloNumeros.length < 7) {
+            mostrarToast(" Teléfono inválido.");
+            return;
         }
 
-        // ✔ Todo correcto → finalizar
-        limpiarCarrito();
-        mostrarModalFinal();
+        // ✔ Datos válidos → Abrir Culqi
+        const totalSinSimbolos = parseFloat(
+            document.querySelector(".checkout-total").textContent.replace("S/", "")
+        );
+
+        if (!inicializarCulqi(totalSinSimbolos)) {
+            mostrarToast(" Error al inicializar Culqi.");
+            return;
+        }
+
+        if (abrirCulqi()) {
+            console.log(" Modal de Culqi abierto");
+        } else {
+            mostrarToast(" No se pudo abrir el modal de Culqi.");
+        }
     });
 }
